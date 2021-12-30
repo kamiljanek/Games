@@ -9,8 +9,8 @@ namespace ImbuingCalculator
             MainMenu();
         }
         const string title = "IMBUING CALCULATOR";
-        const string unit = "[Gold Coin]";
-        
+        public const string unit = "[Gold Coin]";
+
         static int protectiveCharmPrice;
         static int sabretoothPrice;
         static int vexclawTalonPrice;
