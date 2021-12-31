@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace ImbuingCalculator
 {
@@ -8,13 +9,27 @@ namespace ImbuingCalculator
         {
             MainMenu();
         }
+           public void MainMenu(List<ImbuingType> imbuingTypeList)
+            {
+                Console.Clear();
+                Console.WriteLine();
+                int i = 1;
+                foreach (var item in imbuingTypeList)
+                {
+                    Console.WriteLine($"{i}. {item.Name} Price");
+                    i++;
+                }
+                Console.WriteLine();
+                Console.Write("Choose item: ");
+            }
+        #region Old Program
         const string title = "IMBUING CALCULATOR";
         public const string unit = "[Gold Coin]";
 
         static int protectiveCharmPrice;
         static int sabretoothPrice;
         static int vexclawTalonPrice;
-        
+
         static int vampireTeethPrice;
         static int bloodyPincersPrice;
         static int pieceOfDeadBrainPrice;
@@ -26,7 +41,7 @@ namespace ImbuingCalculator
         static int criticalImbuingPrice;
         static int lifeLeechImbuingPrice;
         static int manaLeechImbuingPrice;
-        
+
         static int goldTokenPrice;
 
         static int calculation;
@@ -206,7 +221,7 @@ namespace ImbuingCalculator
                     break;
 
                 case "4":
-                     lifeLeechImbuingPrice = LifeLeechImbuingPrice();
+                    lifeLeechImbuingPrice = LifeLeechImbuingPrice();
                     calculation = Calculation(lifeLeechImbuingPrice, goldTokenPrice);
                     earnOrLoose = (calculation < 0) ? "earn" : "loose";
                     Console.Clear();
@@ -355,6 +370,81 @@ namespace ImbuingCalculator
             Console.SetCursorPosition((Console.WindowWidth - writeLine.Length) / 2, Console.CursorTop); //centering text
             Console.WriteLine(writeLine);
         }
+        #endregion
+
+
+        public static EachImbuingItem protectiveCharm = new EachImbuingItem(20, "Protective Charm");                                 // dlaczego tu musze miec "static"?
+        public static EachImbuingItem sabretooth = new EachImbuingItem(25, "Sabretooth");
+        public static EachImbuingItem vexclawTalon = new EachImbuingItem(5, "Vexclaw Talon");
+        public static EachImbuingItem ropeBelt = new EachImbuingItem(25, "RopeBelt");
+        public static EachImbuingItem silencerClaws = new EachImbuingItem(25, "Silencer Claws");
+        public static EachImbuingItem grimeleechWings = new EachImbuingItem(5, "Grimeleech Wings");
+        public static EachImbuingItem vampireTeeth = new EachImbuingItem(25, "Vampire Teeth");
+        public static EachImbuingItem bloodyPincers = new EachImbuingItem(15, "Bloody Pincers");
+        public static EachImbuingItem pieceOfDeadBrain = new EachImbuingItem(5, "Piece Of Dead Brain");
+        public static EachImbuingItem goldToken = new EachImbuingItem(6, "Gold Token");
+
+
+        public static List<EachImbuingItem> criticalItemList;
+        public static List<EachImbuingItem> manaLeechItemList;
+        public static List<EachImbuingItem> lifeLeechItemList;
+        public static List<EachImbuingItem> goldTokenList;
+
+        public static List<ImbuingType> imbuingTypes;
+
+        static List<EachImbuingItem> ListItemForCriticalImbuing()
+        {
+            var listItemForCriticalImbuing = new List<EachImbuingItem>();
+            listItemForCriticalImbuing.Add(protectiveCharm);
+            listItemForCriticalImbuing.Add(sabretooth);
+            listItemForCriticalImbuing.Add(vexclawTalon);
+
+            return listItemForCriticalImbuing;
+        }
+        static List<EachImbuingItem> ListItemForManaLechImbuing()
+        {
+            var listItemForManaLechImbuing = new List<EachImbuingItem>();
+            listItemForManaLechImbuing.Add(ropeBelt);
+            listItemForManaLechImbuing.Add(silencerClaws);
+            listItemForManaLechImbuing.Add(grimeleechWings);
+
+            return listItemForManaLechImbuing;
+        }
+        static List<EachImbuingItem> ListItemForLifeLeechImbuing()
+        {
+            var listItemForLifeLeechImbuing = new List<EachImbuingItem>();
+            listItemForLifeLeechImbuing.Add(vampireTeeth);
+            listItemForLifeLeechImbuing.Add(bloodyPincers);
+            listItemForLifeLeechImbuing.Add(pieceOfDeadBrain);
+
+            return listItemForLifeLeechImbuing;
+        }
+        static List<EachImbuingItem> GoldTokenList()
+        {
+            var goldTokenList = new List<EachImbuingItem>();
+            goldTokenList.Add(goldToken);
+
+            return goldTokenList;
+        }
+        public static ImbuingType criticalImbuingType = new ImbuingType("Critical", criticalItemList);
+        public static ImbuingType manaLeechImbuingType = new ImbuingType("Mana Leech", manaLeechItemList);
+        public static ImbuingType lifeLeechImbuingType = new ImbuingType("Life Leech", lifeLeechItemList);
+        public static ImbuingType goldTokenType = new ImbuingType("Gold Token", goldTokenList);
+
+        static List<ImbuingType> ImbuingTypesList()
+        {
+            var imbuingTypesList = new List<ImbuingType>();
+            imbuingTypesList.Add(criticalImbuingType);
+            imbuingTypesList.Add(manaLeechImbuingType);
+            imbuingTypesList.Add(lifeLeechImbuingType);
+            imbuingTypesList.Add(goldTokenType);
+
+            return imbuingTypesList;
+        }
+
+
+
+
     }
 
 }

@@ -6,7 +6,7 @@ namespace ImbuingCalculator
 {
     public class ImbuingLevel
     {
-        public ImbuingLevel(string name, int numberOfGoldTokens, )
+        public ImbuingLevel(string name, int numberOfGoldTokens)
         {
 
         }
