@@ -35,14 +35,14 @@ namespace Test
     }
     public class WeatherArchives
     {
-        public static void Main()
-        {
-            List<DayEntity> dayEntity = new List<DayEntity>();
-            dayEntity.Add(new DayEntity(1, "mniam", "Today"));
+        //public static void Eain()
+        //{
+        //    List<DayEntity> dayEntity = new List<DayEntity>();
+        //    dayEntity.Add(new DayEntity(1, "mniam", "Today"));
 
 
 
-        }
+        //}
     }
    
 }
