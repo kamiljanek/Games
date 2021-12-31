@@ -10,7 +10,7 @@ namespace ImbuingCalculator
         /// <summary>
         /// Create item which you need to Imbuing
         /// </summary>
-        /// <param name="quantityNeeded">How many this items you need to imbuing?</param>
+        /// <param name="quantityNeeded">How meny items do you need to imbuing?</param>
         /// <param name="firstName">First name of item</param>
         /// <param name="secondName">Second name of item (if needed)</param>
         /// <param name="thirdName">Third name of item (if needed)</param>
@@ -29,18 +29,20 @@ namespace ImbuingCalculator
         public string ThirdName { get; set; }
         public string FourthName { get; set; }
         public int QuantityNeeded { get; set; }
-        public string Price { get; set; }
+        public int Price { get; set; }
 
-        public void WriteEachItemTitle()
+        /// <summary>
+        /// Read each item price from user
+        /// </summary>
+        /// <param name="eachImbuingItem">The specific item</param>
+        public int EachImbuingItemPrice(EachImbuingItem eachImbuingItem)
         {
-            Console.WriteLine($"{0} {1} {2} {3} price {GoldUnit.unit}:");
-        }
-        public int EachImbuingItemPrice()
-        {
+            Console.WriteLine($"{eachImbuingItem.FirstName} {eachImbuingItem.SecondName} {eachImbuingItem.ThirdName} {eachImbuingItem.FourthName} price {GoldUnit.unit}:");
             string input = Console.ReadLine();
 
             int eachImbuingItemPrice = Convert.ToInt32(input);
             return eachImbuingItemPrice;
         }
+
     }
 }
