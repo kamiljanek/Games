@@ -26,9 +26,9 @@ namespace ImbuingCalculator
         /// Read each item price from user
         /// </summary>
         /// <param name="eachImbuingItem">The specific item</param>
-        public int EachImbuingItemPrice(EachImbuingItem eachImbuingItem)
+        public static int EachImbuingItemPrice(EachImbuingItem eachImbuingItem)
         {
-            Console.WriteLine($"{eachImbuingItem.Name} price {GoldUnit.unit}:");
+            Console.Write($"{eachImbuingItem.Name} price {GoldUnit.unit}:");
             string input = Console.ReadLine();
 
             int eachImbuingItemPrice = Convert.ToInt32(input);

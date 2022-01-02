@@ -4,13 +4,13 @@ using System.Text;
 
 namespace ImbuingCalculator
 {
-    public class Centering
+    public static class Centering
     {
         /// <summary>
-        /// Centering "WriteLine" input 
+        /// Centering "WriteLine" 
         /// </summary>
         /// <param name="writeLine"></param>
-        public void CenteringWriteLine(string writeLine)
+        public static void CenteringWriteLine(string writeLine)
         {
             Console.SetCursorPosition((Console.WindowWidth - writeLine.Length) / 2, Console.CursorTop); //centering text
             Console.WriteLine(writeLine);
