@@ -28,7 +28,7 @@ namespace ImbuingCalculator
             else if (chooseMenuInt == 4)
             {
                 var entityImbuingPrice = ImbuingType.EntityImbuingPrice(imbuingTypes[chooseLocalMenuInt - 1].ImbuingItemsList);
-                var entityGoldTokenPrice = ImbuingType.EntityImbuingPrice(imbuingTypes[3].ImbuingItemsList);
+                var entityGoldTokenPrice = ImbuingType.EntityImbuingPrice(imbuingTypes[0].ImbuingItemsList);
 
                 result = ImbuingType.Calculation(entityImbuingPrice, entityGoldTokenPrice);
             }
@@ -37,11 +37,11 @@ namespace ImbuingCalculator
                 goto startLocalMenu;
             }
 
-            if (chooseLocalMenuInt == 4)
+            if (chooseLocalMenuInt == 1)
             {
                 goto startMainMenu;
             }
-            else if (result == 0)
+            else if (chooseMenuInt > 0 & chooseMenuInt < 4)
             {
                 goto startLocalMenu;
             }
@@ -57,7 +57,7 @@ namespace ImbuingCalculator
                 Console.WriteLine($"If you will buy Gold Tokens instead of items you will EARN {Math.Abs(result)} {GoldUnit.unit}");
             }
             Console.WriteLine();
-            Console.ForegroundColor = ConsoleColor.White;
+            Console.ForegroundColor = ConsoleColor.Gray;
             Console.WriteLine("PUSH BUTTON TO CONTINUE...");
             Console.ReadKey();
             goto startMainMenu;
@@ -104,41 +104,29 @@ namespace ImbuingCalculator
         public static int chooseMenuInt;
         public static int result;
 
-        public static EachImbuingItem protectiveCharm = new EachImbuingItem(20, "Protective Charm");                                 // dlaczego tu musze miec "static"?
-        public static EachImbuingItem sabretooth = new EachImbuingItem(25, "Sabretooth");
-        public static EachImbuingItem vexclawTalon = new EachImbuingItem(5, "Vexclaw Talon");
-        public static EachImbuingItem ropeBelt = new EachImbuingItem(25, "RopeBelt");
-        public static EachImbuingItem silencerClaws = new EachImbuingItem(25, "Silencer Claws");
-        public static EachImbuingItem grimeleechWings = new EachImbuingItem(5, "Grimeleech Wings");
-        public static EachImbuingItem vampireTeeth = new EachImbuingItem(25, "Vampire Teeth");
-        public static EachImbuingItem bloodyPincers = new EachImbuingItem(15, "Bloody Pincers");
-        public static EachImbuingItem pieceOfDeadBrain = new EachImbuingItem(5, "Piece Of Dead Brain");
-        public static EachImbuingItem goldToken = new EachImbuingItem(6, "Gold Token");
-
-
         public static List<EachImbuingItem> criticalItemsList = new List<EachImbuingItem>
         {
-        protectiveCharm,
-        sabretooth,
-        vexclawTalon
+        new EachImbuingItem(20, "Protective Charm"),
+        new EachImbuingItem(25, "Sabretooth"),
+        new EachImbuingItem(5, "Vexclaw Talon")
         };
 
         public static List<EachImbuingItem> manaLeechItemsList = new List<EachImbuingItem>
         {
-        ropeBelt,
-        silencerClaws,
-        grimeleechWings
+        new EachImbuingItem(25, "RopeBelt"),
+        new EachImbuingItem(25, "Silencer Claws"),
+        new EachImbuingItem(5, "Grimeleech Wings")
         };
         public static List<EachImbuingItem> lifeLeechItemsList = new List<EachImbuingItem>
         {
-        vampireTeeth,
-        bloodyPincers,
-        pieceOfDeadBrain
+        new EachImbuingItem(25, "Vampire Teeth"),
+        new EachImbuingItem(15, "Bloody Pincers"),
+        new EachImbuingItem(5, "Piece Of Dead Brain")
         };
 
         public static List<EachImbuingItem> goldTokensList = new List<EachImbuingItem>
         {
-        goldToken
+        new EachImbuingItem(6, "Gold Token")
         };
 
         public static ImbuingType criticalImbuingType = new ImbuingType("Critical", criticalItemsList);
@@ -148,10 +136,10 @@ namespace ImbuingCalculator
 
         public static List<ImbuingType> imbuingTypes = new List<ImbuingType>
         {
-            criticalImbuingType,
-            manaLeechImbuingType,
-            lifeLeechImbuingType,
-            goldTokenType
+            new ImbuingType("Gold Token", goldTokensList),
+            new ImbuingType("Critical", criticalItemsList),
+            new ImbuingType("Mana Leech", manaLeechItemsList),
+            new ImbuingType("Life Leech", lifeLeechItemsList)
         };
 
 
