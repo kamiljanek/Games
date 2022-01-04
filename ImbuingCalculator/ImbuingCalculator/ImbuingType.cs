@@ -21,30 +21,13 @@ namespace ImbuingCalculator
         public List<EachImbuingItem> ImbuingItemsList { get; set; }
         public EachImbuingItem ImbuingItem { get; set; }
 
-        /// <summary>
-        /// Create menu to Imbuing entity
-        /// </summary>
-        /// <param name="eachImbuingItemsList">The list of specific Imbuing items</param>
-        public void EntityImbuingMenu(List<EachImbuingItem> eachImbuingItemList)
-        {
-            Console.Clear();
-            Console.WriteLine();
-            int i = 1;
-            foreach (var item in eachImbuingItemList)
-            {
-                Console.WriteLine($"{i}. {item.Name} Price");
-                i++;
-            }
-            Console.WriteLine($"{i}. Calculate...");
-            Console.WriteLine();
-            Console.Write("Choose item: ");
-        }
+     
         /// <summary>
         /// Calculate whole specific Imbuing price
         /// </summary>
         /// <param name="eachImbuingItemList">The list of specific Imbuing items</param>
         /// <returns></returns>
-        public int EntityImbuingPrice(List<EachImbuingItem> eachImbuingItemList)
+        public static int EntityImbuingPrice(List<EachImbuingItem> eachImbuingItemList)
         {
             int entityImpuingPrice = 0;
             foreach (var item in eachImbuingItemList)
@@ -55,9 +38,9 @@ namespace ImbuingCalculator
 
             return entityImpuingPrice;
         }
-        public int Calculation(int specificImpuingPrice, int goldTokenPrice)
+        public static int Calculation(int specificImbuingPrice, int goldTokenPrice)
         {
-            int result = goldTokenPrice - specificImpuingPrice;
+            int result = goldTokenPrice - specificImbuingPrice;
             return result;
         }
     }
