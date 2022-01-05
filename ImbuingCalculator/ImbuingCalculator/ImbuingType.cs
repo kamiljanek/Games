@@ -38,6 +38,16 @@ namespace ImbuingCalculator
 
             return entityImpuingPrice;
         }
+        public static int EntityImbuingIntricatePrice(List<EachImbuingItem> eachImbuingItemList)
+        {
+            int entityImpuingIntricatePrice = 0;
+            for (int i = 0; i < 2; i++)
+            {
+                int a = eachImbuingItemList[i].QuantityNeeded * eachImbuingItemList[i].Price;    //"a" assistance variable
+                entityImpuingIntricatePrice += a;
+            }
+            return entityImpuingIntricatePrice;
+        }
         public static int Calculation(int specificImbuingPrice, int goldTokenPrice)
         {
             int result = goldTokenPrice - specificImbuingPrice;

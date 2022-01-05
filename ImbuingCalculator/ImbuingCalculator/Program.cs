@@ -27,7 +27,7 @@ namespace ImbuingCalculator
             }
             else if (chooseMenuInt == 4)
             {
-                var entityImbuingPrice = ImbuingType.EntityImbuingPrice(imbuingTypes[chooseLocalMenuInt - 1].ImbuingItemsList);
+                entityImbuingPrice = ImbuingType.EntityImbuingPrice(imbuingTypes[chooseLocalMenuInt - 1].ImbuingItemsList);
                 var entityGoldTokenPrice = ImbuingType.EntityImbuingPrice(imbuingTypes[0].ImbuingItemsList);
 
                 result = ImbuingType.Calculation(entityImbuingPrice, entityGoldTokenPrice);
@@ -49,20 +49,35 @@ namespace ImbuingCalculator
             if (result > 0)
             {
                 Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine($"If you will buy Gold Tokens instead of items you will LOOSE {result} {GoldUnit.unit}");
+                Console.WriteLine($"If you will buy 6 Gold Tokens instead of items you will LOOSE {result} {GoldUnit.unit}");
             }
             else
             {
                 Console.ForegroundColor = ConsoleColor.Green;
-                Console.WriteLine($"If you will buy Gold Tokens instead of items you will EARN {Math.Abs(result)} {GoldUnit.unit}");
+                Console.WriteLine($"If you will buy 6 Gold Tokens instead of items you will SAVE {Math.Abs(result)} {GoldUnit.unit}");
+            }
+
+            if (result > -40000)
+            {
+                var entityImbuingLastItemPrice = imbuingTypes[chooseLocalMenuInt - 1].ImbuingItemsList[2].QuantityNeeded * imbuingTypes[chooseLocalMenuInt - 1].ImbuingItemsList[2].Price;
+                var entityGoldTokenIntricatePrice = 4 * goldTokensList[0].Price;
+
+                result = entityImbuingPrice - (entityGoldTokenIntricatePrice + entityImbuingLastItemPrice);
+                Console.WriteLine();
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine($"But if you will buy 4 Gold Tokens and last items you SAVE {result} {GoldUnit.unit} ");
             }
             Console.WriteLine();
             Console.ForegroundColor = ConsoleColor.Gray;
             Console.WriteLine("PUSH BUTTON TO CONTINUE...");
             Console.ReadKey();
-            goto startMainMenu;
 
+
+            goto startMainMenu;
         }
+
+
+
         static void MainMenu(List<ImbuingType> imbuingTypeList)
         {
             Console.Clear();
@@ -103,6 +118,7 @@ namespace ImbuingCalculator
         public static string chooseMenu;
         public static int chooseMenuInt;
         public static int result;
+        public static int entityImbuingPrice;
 
         public static List<EachImbuingItem> criticalItemsList = new List<EachImbuingItem>
         {
