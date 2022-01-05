@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Test
 {
@@ -6,23 +7,18 @@ namespace Test
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
-            int[] lista = { 112, 24, 3 };
-            SpecificImpuingPrice(lista);
+            EachImbuingItem jedenn = new EachImbuingItem(1, "jeden");
+            EachImbuingItem dwaa = new EachImbuingItem(2, "dwa");
+            EachImbuingItem trzyy = new EachImbuingItem(3, "trzy");
 
-
-
-            static void SpecificImpuingPrice(int[] eachImbuingItemList)
+            List<EachImbuingItem> listaa = new List<EachImbuingItem>
             {
-                int result = 0;
-                foreach (var item in eachImbuingItemList)
-                {
-                    int cos = item;
-                    result += cos;
-
-                }
-                Console.WriteLine(result);
-            }
+                new EachImbuingItem(1,"jeden"),
+                new EachImbuingItem(2,"dwa"),
+                new EachImbuingItem(3,"trzy")
+            };
+            var pierwszyElementListy = listaa[0];
+            Console.WriteLine(pierwszyElementListy[1]);
         }
     }
 }

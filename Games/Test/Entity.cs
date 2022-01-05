@@ -4,45 +4,26 @@ using System.Text;
 
 namespace Test
 {
-    public class Entity
+    public class EachImbuingItem
     {
-        public int Id { get; set; }
-        public string Code { get; set; }
-        public string Name { get; set; }
-    }
 
-    public class DayEntity 
+        /// <summary>
+        /// Create item which you need to Imbuing
+        /// </summary>
+        /// <param name="quantityNeeded">How meny items do you need to imbuing?</param>
+        /// <param name="name">First name of item</param>
+        public EachImbuingItem(int quantityNeeded, string name)
         {
-        public DayEntity(int id, string code, string name)
-        {
-            Id = id;
-            Code = code;
+            QuantityNeeded = quantityNeeded;
             Name = name;
+
         }
-        public int Id { get; set; }
-        public string Code { get; set; }
         public string Name { get; set; }
-    }
+        public int QuantityNeeded { get; set; }
+        public int Price { get; set; }
 
-    
-    public class TypeEntity : Entity
-    {
-
-    }
-    public class HourEntity : Entity
-    {
+     
 
     }
-    public class WeatherArchives
-    {
-        //public static void Eain()
-        //{
-        //    List<DayEntity> dayEntity = new List<DayEntity>();
-        //    dayEntity.Add(new DayEntity(1, "mniam", "Today"));
 
-
-
-        //}
-    }
-   
 }
