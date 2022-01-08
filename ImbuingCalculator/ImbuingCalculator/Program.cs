@@ -7,30 +7,32 @@ namespace ImbuingCalculator
     {
         static void Main(string[] args)
         {
+        #region All Program
+
         startMainMenu:
 
-            MainMenu(imbuingTypes);
+            MainMenu(ImbuingTypes);
 
-            while ((chooseMenuInt <= 0) | (chooseMenuInt >= 5))
+            while ((ChooseMenuInt <= 0) | (ChooseMenuInt >= 5))
             {
-                MainMenu(imbuingTypes);
+                MainMenu(ImbuingTypes);
             }
 
-            var chooseLocalMenuInt = chooseMenuInt;
+            var chooseLocalMenuInt = ChooseMenuInt;
 
         startLocalMenu:
 
-            MainMenu(imbuingTypes[chooseLocalMenuInt - 1].ImbuingItemsList);
-            if (chooseMenuInt > 0 & chooseMenuInt < 4)
+            MainMenu(ImbuingTypes[chooseLocalMenuInt - 1].ImbuingItemsList);
+            if (ChooseMenuInt > 0 & ChooseMenuInt < 4)
             {
-                imbuingTypes[chooseLocalMenuInt - 1].ImbuingItemsList[chooseMenuInt - 1].Price = EachImbuingItem.EachImbuingItemPrice(imbuingTypes[chooseLocalMenuInt - 1].ImbuingItemsList[chooseMenuInt - 1]);
+                ImbuingTypes[chooseLocalMenuInt - 1].ImbuingItemsList[ChooseMenuInt - 1].Price = EachImbuingItem.EachImbuingItemPrice(ImbuingTypes[chooseLocalMenuInt - 1].ImbuingItemsList[ChooseMenuInt - 1]);
             }
-            else if (chooseMenuInt == 4)
+            else if (ChooseMenuInt == 4)
             {
-                entityImbuingPrice = ImbuingType.EntityImbuingPrice(imbuingTypes[chooseLocalMenuInt - 1].ImbuingItemsList);
-                var entityGoldTokenPrice = ImbuingType.EntityImbuingPrice(imbuingTypes[0].ImbuingItemsList);
+                EntityImbuingPrice = ImbuingType.EntityImbuingPrice(ImbuingTypes[chooseLocalMenuInt - 1].ImbuingItemsList);
+                var entityGoldTokenPrice = ImbuingType.EntityImbuingPrice(ImbuingTypes[0].ImbuingItemsList);
 
-                result = ImbuingType.Calculation(entityImbuingPrice, entityGoldTokenPrice);
+                Result = ImbuingType.Calculation(EntityImbuingPrice, entityGoldTokenPrice);
             }
             else
             {
@@ -41,31 +43,31 @@ namespace ImbuingCalculator
             {
                 goto startMainMenu;
             }
-            else if (chooseMenuInt > 0 & chooseMenuInt < 4)
+            else if (ChooseMenuInt > 0 & ChooseMenuInt < 4)
             {
                 goto startLocalMenu;
             }
 
-            if (result > 0)
+            if (Result > 0)
             {
                 Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine($"If you will buy 6 Gold Tokens instead of items you will LOOSE {result} {GoldUnit.unit}");
+                Console.WriteLine($"If you will buy 6 Gold Tokens instead of items you will LOOSE {Result} {GoldUnit.Unit}");
             }
             else
             {
                 Console.ForegroundColor = ConsoleColor.Green;
-                Console.WriteLine($"If you will buy 6 Gold Tokens instead of items you will SAVE {Math.Abs(result)} {GoldUnit.unit}");
+                Console.WriteLine($"If you will buy 6 Gold Tokens instead of items you will SAVE {Math.Abs(Result)} {GoldUnit.Unit}");
             }
 
-            if (result > -40000)
+            if (Result > -40000)
             {
-                var entityImbuingLastItemPrice = imbuingTypes[chooseLocalMenuInt - 1].ImbuingItemsList[2].QuantityNeeded * imbuingTypes[chooseLocalMenuInt - 1].ImbuingItemsList[2].Price;
-                var entityGoldTokenIntricatePrice = 4 * goldTokensList[0].Price;
+                var entityImbuingLastItemPrice = ImbuingTypes[chooseLocalMenuInt - 1].ImbuingItemsList[2].QuantityNeeded * ImbuingTypes[chooseLocalMenuInt - 1].ImbuingItemsList[2].Price;
+                var entityGoldTokenIntricatePrice = 4 * GoldTokensList[0].Price;
 
-                result = entityImbuingPrice - (entityGoldTokenIntricatePrice + entityImbuingLastItemPrice);
+                Result = EntityImbuingPrice - (entityGoldTokenIntricatePrice + entityImbuingLastItemPrice);
                 Console.WriteLine();
                 Console.ForegroundColor = ConsoleColor.Green;
-                Console.WriteLine($"But if you will buy 4 Gold Tokens and last items you SAVE {result} {GoldUnit.unit} ");
+                Console.WriteLine($"But if you will buy 4 Gold Tokens and last items you SAVE {Result} {GoldUnit.Unit} ");
             }
             Console.WriteLine();
             Console.ForegroundColor = ConsoleColor.Gray;
@@ -74,10 +76,15 @@ namespace ImbuingCalculator
 
 
             goto startMainMenu;
+        #endregion
         }
 
+        #region Menu methods
 
-
+        /// <summary>
+        /// Print Main Menu from Imbuing List
+        /// </summary>
+        /// <param name="imbuingTypeList"></param>
         static void MainMenu(List<ImbuingType> imbuingTypeList)
         {
             Console.Clear();
@@ -91,9 +98,13 @@ namespace ImbuingCalculator
             }
             Console.WriteLine();
             Console.Write("Choose item: ");
-            chooseMenu = Console.ReadLine();
-            chooseMenuInt = Int32.Parse(chooseMenu);
+            ChooseMenu = Console.ReadLine();
+            ChooseMenuInt = Int32.Parse(ChooseMenu);
         }
+        /// <summary>
+        /// Print choosen Imbuing Menu from specific Imbuing items List
+        /// </summary>
+        /// <param name="imbuingTypeList"></param>
         static void MainMenu(List<EachImbuingItem> imbuingTypeList)         //how to conect 2 MainMenu methods???
         {
             Console.Clear();
@@ -108,56 +119,57 @@ namespace ImbuingCalculator
             Console.WriteLine($"{i}. Calculate");
             Console.WriteLine();
             Console.Write("Choose item: ");
-            chooseMenu = Console.ReadLine();
-            chooseMenuInt = Int32.Parse(chooseMenu);
+            ChooseMenu = Console.ReadLine();
+            ChooseMenuInt = Int32.Parse(ChooseMenu);
         }
+        #endregion
 
+        #region constant values
 
         const string title = "IMBUING CALCULATOR";
 
-        public static string chooseMenu;
-        public static int chooseMenuInt;
-        public static int result;
-        public static int entityImbuingPrice;
+        public static string ChooseMenu;
+        public static int ChooseMenuInt;
+        public static int Result;
+        public static int EntityImbuingPrice;
+        #endregion
 
-        public static List<EachImbuingItem> criticalItemsList = new List<EachImbuingItem>
+        #region Create instances and Imbuing Lists
+
+        public static List<EachImbuingItem> CriticalItemsList = new List<EachImbuingItem>
         {
         new EachImbuingItem(20, "Protective Charm"),
         new EachImbuingItem(25, "Sabretooth"),
         new EachImbuingItem(5, "Vexclaw Talon")
         };
 
-        public static List<EachImbuingItem> manaLeechItemsList = new List<EachImbuingItem>
+        public static List<EachImbuingItem> ManaLeechItemsList = new List<EachImbuingItem>
         {
         new EachImbuingItem(25, "RopeBelt"),
         new EachImbuingItem(25, "Silencer Claws"),
         new EachImbuingItem(5, "Grimeleech Wings")
         };
-        public static List<EachImbuingItem> lifeLeechItemsList = new List<EachImbuingItem>
+        public static List<EachImbuingItem> LifeLeechItemsList = new List<EachImbuingItem>
         {
         new EachImbuingItem(25, "Vampire Teeth"),
         new EachImbuingItem(15, "Bloody Pincers"),
         new EachImbuingItem(5, "Piece Of Dead Brain")
         };
 
-        public static List<EachImbuingItem> goldTokensList = new List<EachImbuingItem>
+        public static List<EachImbuingItem> GoldTokensList = new List<EachImbuingItem>
         {
         new EachImbuingItem(6, "Gold Token")
         };
 
-        public static ImbuingType criticalImbuingType = new ImbuingType("Critical", criticalItemsList);
-        public static ImbuingType manaLeechImbuingType = new ImbuingType("Mana Leech", manaLeechItemsList);
-        public static ImbuingType lifeLeechImbuingType = new ImbuingType("Life Leech", lifeLeechItemsList);
-        public static ImbuingType goldTokenType = new ImbuingType("Gold Token", goldTokensList);
 
-        public static List<ImbuingType> imbuingTypes = new List<ImbuingType>
+        public static List<ImbuingType> ImbuingTypes = new List<ImbuingType>
         {
-            new ImbuingType("Gold Token", goldTokensList),
-            new ImbuingType("Critical", criticalItemsList),
-            new ImbuingType("Mana Leech", manaLeechItemsList),
-            new ImbuingType("Life Leech", lifeLeechItemsList)
+            new ImbuingType("Gold Token", GoldTokensList),
+            new ImbuingType("Critical", CriticalItemsList),
+            new ImbuingType("Mana Leech", ManaLeechItemsList),
+            new ImbuingType("Life Leech", LifeLeechItemsList)
         };
-
+        #endregion
 
     }
 

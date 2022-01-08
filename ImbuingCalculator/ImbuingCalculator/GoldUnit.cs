@@ -9,6 +9,6 @@ namespace ImbuingCalculator
     /// </summary>
     public static class GoldUnit
     {
-        public static string unit = "[Gold Coin]";
+        public static string Unit = "[Gold Coin]";
     }
 }

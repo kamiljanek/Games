@@ -38,6 +38,11 @@ namespace ImbuingCalculator
 
             return entityImpuingPrice;
         }
+        /// <summary>
+        /// Return Intricate Imbuing price
+        /// </summary>
+        /// <param name="eachImbuingItemList">Choosen Imbuing items list</param>
+        /// <returns></returns>
         public static int EntityImbuingIntricatePrice(List<EachImbuingItem> eachImbuingItemList)
         {
             int entityImpuingIntricatePrice = 0;
@@ -48,6 +53,12 @@ namespace ImbuingCalculator
             }
             return entityImpuingIntricatePrice;
         }
+        /// <summary>
+        /// Gold Tokens price subtract Imbuing price
+        /// </summary>
+        /// <param name="specificImbuingPrice">int Price</param>
+        /// <param name="goldTokenPrice">int Price</param>
+        /// <returns></returns>
         public static int Calculation(int specificImbuingPrice, int goldTokenPrice)
         {
             int result = goldTokenPrice - specificImbuingPrice;
