@@ -7,8 +7,10 @@ namespace ImbuingCalculator
     /// <summary>
     /// Constant string
     /// </summary>
-    public static class GoldUnit
+    public static class ConstantValues
     {
         public static string Unit = "[Gold Coin]";
+        public static string Title = "IMBUING CALCULATOR";
     }
+
 }

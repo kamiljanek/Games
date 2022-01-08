@@ -12,7 +12,7 @@ namespace ImbuingCalculator
         /// <param name="writeLine"></param>
         public static void CenteringWriteLine(string writeLine)
         {
-            Console.SetCursorPosition((Console.WindowWidth - writeLine.Length) / 2, Console.CursorTop); //centering text
+            Console.SetCursorPosition((Console.WindowWidth - writeLine.Length) / 2, Console.CursorTop);
             Console.WriteLine(writeLine);
         }
     }

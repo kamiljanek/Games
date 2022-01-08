@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ImbuingCalculator
 {
-    public class EachImbuingItem
+    public class ImbuingItem
     {
 
         /// <summary>
@@ -12,7 +12,7 @@ namespace ImbuingCalculator
         /// </summary>
         /// <param name="quantityNeeded">How meny items do you need to imbuing?</param>
         /// <param name="name">First name of item</param>
-        public EachImbuingItem(int quantityNeeded, string name)
+        public ImbuingItem(int quantityNeeded, string name)
         {
             QuantityNeeded = quantityNeeded;
             Name = name;
@@ -25,14 +25,14 @@ namespace ImbuingCalculator
         /// <summary>
         /// Read each item price from user
         /// </summary>
-        /// <param name="eachImbuingItem">The specific item</param>
-        public static int EachImbuingItemPrice(EachImbuingItem eachImbuingItem)
+        /// <param name="ImbuingItem">The specific item</param>
+        public static int SingleImbuingItemPrice(ImbuingItem ImbuingItem)
         {
-            Console.Write($"{eachImbuingItem.Name} price {GoldUnit.Unit}:");
+            Console.Write($"{ImbuingItem.Name} price {ConstantValues.Unit}:");
             string input = Console.ReadLine();
 
-            int eachImbuingItemPrice = Convert.ToInt32(input);
-            return eachImbuingItemPrice;
+            int singleImbuingItemPrice = Convert.ToInt32(input);
+            return singleImbuingItemPrice;
         }
 
     }

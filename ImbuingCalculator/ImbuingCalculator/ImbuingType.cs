@@ -10,58 +10,58 @@ namespace ImbuingCalculator
     /// </summary>
     /// <param name="name">Name of Imbuing</param>
     /// <param name="imbuingItemsList">Lisf of items contains this Imbuing</param>
-        public ImbuingType(string name, List<EachImbuingItem> imbuingItemsList)
+        public ImbuingType(string name, List<ImbuingItem> imbuingItemsList)
         {
             Name = name;
-            ImbuingItemsList = imbuingItemsList;
+            ImbuingItemList = imbuingItemsList;
 
         }
 
         public string Name { get; set; }
-        public List<EachImbuingItem> ImbuingItemsList { get; set; }
-        public EachImbuingItem ImbuingItem { get; set; }
+        public List<ImbuingItem> ImbuingItemList { get; set; }
+        public ImbuingItem ImbuingItem { get; set; }
 
      
         /// <summary>
         /// Calculate whole specific Imbuing price
         /// </summary>
-        /// <param name="eachImbuingItemList">The list of specific Imbuing items</param>
+        /// <param name="ImbuingItemList">The list of specific Imbuing items</param>
         /// <returns></returns>
-        public static int EntityImbuingPrice(List<EachImbuingItem> eachImbuingItemList)
+        public static int IndividualImbuingPrice(List<ImbuingItem> ImbuingItemList)
         {
-            int entityImpuingPrice = 0;
-            foreach (var item in eachImbuingItemList)
+            int individualImbuingPrice = 0;
+            foreach (var item in ImbuingItemList)
             {
                 int a = item.QuantityNeeded * item.Price;   //"a" assistance variable
-                entityImpuingPrice += a;
+                individualImbuingPrice += a;
             }
 
-            return entityImpuingPrice;
+            return individualImbuingPrice;
         }
         /// <summary>
         /// Return Intricate Imbuing price
         /// </summary>
-        /// <param name="eachImbuingItemList">Choosen Imbuing items list</param>
+        /// <param name="ImbuingItemList">Choosen Imbuing items list</param>
         /// <returns></returns>
-        public static int EntityImbuingIntricatePrice(List<EachImbuingItem> eachImbuingItemList)
+        public static int IndividualImbuingIntricatePrice(List<ImbuingItem> ImbuingItemList)
         {
-            int entityImpuingIntricatePrice = 0;
+            int IndividualImbuingIntricatePrice = 0;
             for (int i = 0; i < 2; i++)
             {
-                int a = eachImbuingItemList[i].QuantityNeeded * eachImbuingItemList[i].Price;    //"a" assistance variable
-                entityImpuingIntricatePrice += a;
+                int a = ImbuingItemList[i].QuantityNeeded * ImbuingItemList[i].Price;    //"a" assistance variable
+                IndividualImbuingIntricatePrice += a;
             }
-            return entityImpuingIntricatePrice;
+            return IndividualImbuingIntricatePrice;
         }
         /// <summary>
         /// Gold Tokens price subtract Imbuing price
         /// </summary>
-        /// <param name="specificImbuingPrice">int Price</param>
-        /// <param name="goldTokenPrice">int Price</param>
+        /// <param name="chosenImbuingPrice">int Price</param>
+        /// <param name="goldTokensPrice">int Price</param>
         /// <returns></returns>
-        public static int Calculation(int specificImbuingPrice, int goldTokenPrice)
+        public static int Calculation(int chosenImbuingPrice, int goldTokensPrice)
         {
-            int result = goldTokenPrice - specificImbuingPrice;
+            int result = goldTokensPrice - chosenImbuingPrice;
             return result;
         }
     }
