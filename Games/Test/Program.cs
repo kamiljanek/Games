@@ -7,18 +7,97 @@ namespace Test
     {
         static void Main(string[] args)
         {
-            EachImbuingItem jedenn = new EachImbuingItem(1, "jeden");
-            EachImbuingItem dwaa = new EachImbuingItem(2, "dwa");
-            EachImbuingItem trzyy = new EachImbuingItem(3, "trzy");
+            Animal animal = new Animal();
+            animal.Age = 5;
+            animal.Name = "Franek";
+            //animal.Information();
+            
+        }
+    }
+    interface IAnimal
+    {
 
-            List<EachImbuingItem> listaa = new List<EachImbuingItem>
+        int Age { get; set; }
+        string Name { get; set; }
+        //void Information()
+        //{
+        //    Console.WriteLine($"This entity have {Age} years old and he's name is {Name}");
+        //}
+        void Information();
+    }
+
+    interface IMechanical
+    {
+
+        int Old { get; set; }
+        string Problem { get; set; }
+        void Data()
+        {
+            Console.WriteLine($"This entity have {Old} years old and he's name is {Problem}");
+        }
+
+    }
+    class Animal : IAnimal, IMechanical
+    {
+        private int age;
+        private string name;
+
+        public int Age
+        {
+            get => age;
+            set
             {
-                new EachImbuingItem(1,"jeden"),
-                new EachImbuingItem(2,"dwa"),
-                new EachImbuingItem(3,"trzy")
-            };
-            var pierwszyElementListy = listaa[0];
-            Console.WriteLine(pierwszyElementListy[1]);
+                if (value < 1)
+                {
+                    age = 1;
+                }
+                else
+                {
+                    age = value;
+                }
+            }
+        }
+        public string Name
+        {
+            get => name;
+            set => name = value;
+        }
+        public int Old {get; set; }
+        public string Problem { get; set ; }
+
+        public void Information()
+        {
+            Console.WriteLine($"This entity have {Age} years old and he's name is {Name}");
+            var kaczka = new Kaczka(new SzybkieLatanie());
+        }
+    }
+
+    interface ILatanie
+    {
+        
+        void Lec();
+    }
+    class SzybkieLatanie : ILatanie
+    {
+        public void Lec()
+        {
+            throw new NotImplementedException();
+        }
+    }
+    class PowolneLatanie : ILatanie
+    {
+        public void Lec()
+        {
+            throw new NotImplementedException();
+        }
+    }
+    class Kaczka
+    {
+        private ILatanie latanie;
+
+        public Kaczka(ILatanie latanie)
+        {
+            this.latanie = latanie;
         }
     }
 }
