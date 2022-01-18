@@ -11,14 +11,13 @@ namespace ImbuingCalculatorWinForm
     public partial class formCritical : Form
     {
         private ICalculator calculator;
-        private string goldTokenPrice { get; set; }
-        public formCritical(string goldTokenPrice)
+        public formCritical()
         {
             InitializeComponent();
             calculator = new CriticalCalculator();
         }
 
-
+        #region "X" buttons
         private void btnProtectiveCharmClear_Click(object sender, EventArgs e)
         {
             Values.ProtectiveCharmPrice = 0;
@@ -39,6 +38,9 @@ namespace ImbuingCalculatorWinForm
             txtVexclawTalonPrice.Text = string.Empty;
 
         }
+        #endregion
+
+        #region "txt field" change text 
         private void txtProtectiveCharmPrice_TextChanged(object sender, EventArgs e)
         {
             if (int.TryParse(txtProtectiveCharmPrice.Text, out int value))
@@ -62,6 +64,8 @@ namespace ImbuingCalculatorWinForm
                 Values.VexclawTokenPrice = value;
             }
         }
+        #endregion
+
 
         private void btnCalculateCritical_Click(object sender, EventArgs e)
         {

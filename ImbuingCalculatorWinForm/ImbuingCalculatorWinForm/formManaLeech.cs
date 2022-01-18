@@ -17,7 +17,7 @@ namespace ImbuingCalculatorWinForm
             calculator = new ManaLeechCalculator();
         }
 
-  
+        #region "X" buttons
         private void btnRopeBeltClear_Click(object sender, EventArgs e)
         {
             Values.RopeBeltPrice = 0;
@@ -38,6 +38,9 @@ namespace ImbuingCalculatorWinForm
             txtGrimeleechWingsPrice.Text = string.Empty;
 
         }
+        #endregion
+
+        #region "txt field" change text
         private void txtRopeBeltPrice_TextChanged(object sender, EventArgs e)
         {
             if (int.TryParse(txtRopeBeltPrice.Text, out int value))
@@ -61,8 +64,8 @@ namespace ImbuingCalculatorWinForm
                 Values.GrimeleechWingsPrice = value;
             }
         }
+        #endregion
 
-  
         private void btnCalculateManaLeech_Click(object sender, EventArgs e)
         {
             int result = 0;

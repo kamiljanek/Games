@@ -257,7 +257,7 @@ namespace ImbuingCalculatorWinForm
             this.ResumeLayout(false);
 
         }
-
+    
      
         #endregion
 

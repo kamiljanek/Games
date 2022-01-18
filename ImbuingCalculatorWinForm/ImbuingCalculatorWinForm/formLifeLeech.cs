@@ -19,7 +19,7 @@ namespace ImbuingCalculatorWinForm
             calculator = new LifeLeechCalculator();
         }
 
-
+        #region "X" buttons
         private void btnVampireTeethClear_Click(object sender, EventArgs e)
         {
             Values.VampireTeethPrice = 0;
@@ -37,6 +37,9 @@ namespace ImbuingCalculatorWinForm
             Values.PieceOfDeadBrainPrice = 0;
             txtPieceOfDeadBrainPrice.Text = string.Empty;
         }
+        #endregion
+        
+        #region "txt field" change text
         private void txtVampireTeethPrice_TextChanged(object sender, EventArgs e)
         {
             if (int.TryParse(txtVampireTeethPrice.Text, out int value))
@@ -60,7 +63,7 @@ namespace ImbuingCalculatorWinForm
                 Values.PieceOfDeadBrainPrice = value;
             }
         }
-
+        #endregion
 
         private void btnCalculateLifeLeech_Click(object sender, EventArgs e)
         {
