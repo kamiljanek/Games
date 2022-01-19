@@ -108,22 +108,10 @@ namespace ImbuingCalculatorWinForm
             {
                 Values.GoldTokenPrice = value;
             }
+
         }
     }
-    public static class Values
-    {
-        public static int GoldTokenPrice = 0;
-        public static int ProtectiveCharmPrice = 0;
-        public static int SabretoothPrice = 0;
-        public static int VexclawTokenPrice = 0;
-        public static int RopeBeltPrice = 0;
-        public static int SilencerClawsPrice = 0;
-        public static int GrimeleechWingsPrice = 0;
-        public static int VampireTeethPrice = 0;
-        public static int BloodyPincersPrice = 0;
-        public static int PieceOfDeadBrainPrice = 0;
-
-    }
+ 
 
     interface ICalculator
     {
