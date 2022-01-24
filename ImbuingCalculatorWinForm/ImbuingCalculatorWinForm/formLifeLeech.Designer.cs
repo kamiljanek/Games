@@ -1,4 +1,6 @@
 ﻿
+using System.Collections.Generic;
+
 namespace ImbuingCalculatorWinForm
 {
     partial class formLifeLeech
@@ -44,6 +46,7 @@ namespace ImbuingCalculatorWinForm
             this.txtVampireTeethPrice = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnCalculateLifeLeech = new System.Windows.Forms.Button();
+            this.lblLifeLeechResult = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -58,9 +61,9 @@ namespace ImbuingCalculatorWinForm
             this.txtLifeLeechResult.Location = new System.Drawing.Point(9, 270);
             this.txtLifeLeechResult.Multiline = true;
             this.txtLifeLeechResult.Name = "txtLifeLeechResult";
+            this.txtLifeLeechResult.PlaceholderText = "PUSH CLALULATOR...";
             this.txtLifeLeechResult.Size = new System.Drawing.Size(432, 20);
             this.txtLifeLeechResult.TabIndex = 43;
-            this.txtLifeLeechResult.PlaceholderText = "PUSH CLALULATOR...";
             this.txtLifeLeechResult.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // pictureBox3
@@ -93,9 +96,9 @@ namespace ImbuingCalculatorWinForm
             this.txtPieceOfDeadBrainPrice.ForeColor = System.Drawing.SystemColors.ScrollBar;
             this.txtPieceOfDeadBrainPrice.Location = new System.Drawing.Point(323, 138);
             this.txtPieceOfDeadBrainPrice.Name = "txtPieceOfDeadBrainPrice";
+            this.txtPieceOfDeadBrainPrice.PlaceholderText = "Price...";
             this.txtPieceOfDeadBrainPrice.Size = new System.Drawing.Size(75, 14);
             this.txtPieceOfDeadBrainPrice.TabIndex = 40;
-            this.txtPieceOfDeadBrainPrice.PlaceholderText = "Price...";
             this.txtPieceOfDeadBrainPrice.TextChanged += new System.EventHandler(this.txtPieceOfDeadBrainPrice_TextChanged);
             // 
             // label4
@@ -139,9 +142,9 @@ namespace ImbuingCalculatorWinForm
             this.txtBloodyPincersPrice.ForeColor = System.Drawing.SystemColors.ScrollBar;
             this.txtBloodyPincersPrice.Location = new System.Drawing.Point(323, 88);
             this.txtBloodyPincersPrice.Name = "txtBloodyPincersPrice";
+            this.txtBloodyPincersPrice.PlaceholderText = "Price...";
             this.txtBloodyPincersPrice.Size = new System.Drawing.Size(75, 14);
             this.txtBloodyPincersPrice.TabIndex = 36;
-            this.txtBloodyPincersPrice.PlaceholderText = "Price...";
             this.txtBloodyPincersPrice.TextChanged += new System.EventHandler(this.txtBloodyPincersPrice_TextChanged);
             // 
             // label3
@@ -185,9 +188,9 @@ namespace ImbuingCalculatorWinForm
             this.txtVampireTeethPrice.ForeColor = System.Drawing.SystemColors.ScrollBar;
             this.txtVampireTeethPrice.Location = new System.Drawing.Point(323, 38);
             this.txtVampireTeethPrice.Name = "txtVampireTeethPrice";
+            this.txtVampireTeethPrice.PlaceholderText = "Price...";
             this.txtVampireTeethPrice.Size = new System.Drawing.Size(75, 14);
             this.txtVampireTeethPrice.TabIndex = 32;
-            this.txtVampireTeethPrice.PlaceholderText = "Price...";
             this.txtVampireTeethPrice.TextChanged += new System.EventHandler(this.txtVampireTeethPrice_TextChanged);
             // 
             // label1
@@ -217,12 +220,28 @@ namespace ImbuingCalculatorWinForm
             this.btnCalculateLifeLeech.UseVisualStyleBackColor = true;
             this.btnCalculateLifeLeech.Click += new System.EventHandler(this.btnCalculateLifeLeech_Click);
             // 
+            // lblLifeLeechResult
+            // 
+            this.lblLifeLeechResult.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblLifeLeechResult.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblLifeLeechResult.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(161)))), ((int)(((byte)(176)))));
+            this.lblLifeLeechResult.Location = new System.Drawing.Point(10, 230);
+            this.lblLifeLeechResult.Name = "lblLifeLeechResult";
+            this.lblLifeLeechResult.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.lblLifeLeechResult.Size = new System.Drawing.Size(430, 16);
+            this.lblLifeLeechResult.TabIndex = 45;
+            this.lblLifeLeechResult.Text = "CALCULATOR";
+            this.lblLifeLeechResult.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // formLifeLeech
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
             this.ClientSize = new System.Drawing.Size(450, 380);
+            this.Controls.Add(this.lblLifeLeechResult);
             this.Controls.Add(this.btnCalculateLifeLeech);
             this.Controls.Add(this.txtLifeLeechResult);
             this.Controls.Add(this.pictureBox3);
@@ -250,6 +269,13 @@ namespace ImbuingCalculatorWinForm
 
         #endregion
 
+        List<ImbuingItem> lifeLeechItems = new List<ImbuingItem>()
+            {
+               new ImbuingItem("Vampire Teeth", 25) ,
+               new ImbuingItem("Bloody Pincers", 15),
+               new ImbuingItem("Piece Of Dead Brain", 5)
+
+            };
         private System.Windows.Forms.TextBox txtLifeLeechResult;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.Button btnPieceOfDeadBrainClear;
@@ -264,5 +290,6 @@ namespace ImbuingCalculatorWinForm
         private System.Windows.Forms.TextBox txtVampireTeethPrice;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnCalculateLifeLeech;
+        private System.Windows.Forms.Label lblLifeLeechResult;
     }
 }

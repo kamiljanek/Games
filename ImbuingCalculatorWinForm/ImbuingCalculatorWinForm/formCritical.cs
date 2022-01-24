@@ -11,11 +11,18 @@ namespace ImbuingCalculatorWinForm
     public partial class formCritical : Form
     {
         private ICalculator calculator;
+        private ICalculate basicImbuCalculate = new BasicImbuing();
+        private ICalculate intricateImbuCalculate = new IntricateImbuing();
+        private ICalculate powerfullImbuCalculate = new PowerfullImbuing();
+
         public formCritical()
         {
             InitializeComponent();
             calculator = new CriticalCalculator();
+
         }
+
+
 
         #region "X" buttons
         private void btnProtectiveCharmClear_Click(object sender, EventArgs e)
@@ -46,6 +53,43 @@ namespace ImbuingCalculatorWinForm
             if (int.TryParse(txtProtectiveCharmPrice.Text, out int value))
             {
                 Values.ProtectiveCharmPrice = value;
+                Values.CriticalItems[0] = Values.ProtectiveCharmPrice;
+            }
+            if (Values.GoldTokenPrice == 0)
+            {
+                lblCriticalResult.Text = "Gold Token field is empty...";
+            }
+            else if (Values.SabretoothPrice != 0 && Values.VexclawTokenPrice == 0)
+            {
+                var result = intricateImbuCalculate.Calculate(criticalItems, Values.CriticalItems);
+                if (result < 0)
+                {
+                    lblCriticalResult.Text = $"If you buy 4 Gold Tokens you will LOSE {Math.Abs(result)}";
+                }
+                else
+                    lblCriticalResult.Text = $"If you buy 4 Gold Tokens you will SAVE {result}";
+
+
+            }
+            else if (Values.SabretoothPrice != 0 && Values.VexclawTokenPrice != 0)
+            {
+                var result = powerfullImbuCalculate.Calculate(criticalItems, Values.CriticalItems);
+                if (result < 0)
+                {
+                    lblCriticalResult.Text = $"If you buy 6 Gold Tokens you will LOSE {Math.Abs(result)}";
+                }
+                else
+                    lblCriticalResult.Text = $"If you buy 6 Gold Tokens you will SAVE {result}";
+            }
+            else
+            {
+                var result = basicImbuCalculate.Calculate(criticalItems, Values.CriticalItems);
+                if (result < 0)
+                {
+                    lblCriticalResult.Text = $"If you buy 2 Gold Tokens you will LOSE {Math.Abs(result)}";
+                }
+                else
+                    lblCriticalResult.Text = $"If you buy 2 Gold Tokens you will SAVE {result}";
             }
         }
 
@@ -54,6 +98,35 @@ namespace ImbuingCalculatorWinForm
             if (int.TryParse(txtSabretoothPrice.Text, out int value))
             {
                 Values.SabretoothPrice = value;
+                Values.CriticalItems[1] = Values.SabretoothPrice;
+            }
+            if (Values.GoldTokenPrice == 0)
+            {
+                lblCriticalResult.Text = "Gold Token field is empty...";
+            }
+            else if (Values.ProtectiveCharmPrice == 0)
+            {
+                lblCriticalResult.Text = "Protective Charm field is empty...";
+            }
+            else if (Values.VexclawTokenPrice != 0)
+            {
+                var result = powerfullImbuCalculate.Calculate(criticalItems, Values.CriticalItems);
+                if (result < 0)
+                {
+                    lblCriticalResult.Text = $"If you buy 6 Gold Tokens you will LOSE {Math.Abs(result)}";
+                }
+                else
+                    lblCriticalResult.Text = $"If you buy 6 Gold Tokens you will SAVE {result}";
+            }
+            else
+            {
+                var result = intricateImbuCalculate.Calculate(criticalItems, Values.CriticalItems);
+                if (result < 0)
+                {
+                    lblCriticalResult.Text = $"If you buy 4 Gold Tokens you will LOSE {Math.Abs(result)}";
+                }
+                else
+                    lblCriticalResult.Text = $"If you buy 4 Gold Tokens you will SAVE {result}";
             }
         }
 
@@ -62,6 +135,31 @@ namespace ImbuingCalculatorWinForm
             if (int.TryParse(txtVexclawTalonPrice.Text, out int value))
             {
                 Values.VexclawTokenPrice = value;
+                Values.CriticalItems[2] = Values.VexclawTokenPrice;
+            }
+
+            if (Values.GoldTokenPrice == 0)
+            {
+                lblCriticalResult.Text = "Gold Token field is empty...";
+            }
+            else if (Values.ProtectiveCharmPrice == 0)
+            {
+                lblCriticalResult.Text = "Protective Charm field is empty...";
+            }
+            else if (Values.SabretoothPrice == 0)
+            {
+                lblCriticalResult.Text = "Sabretooth field is empty...";
+
+            }
+            else
+            {
+                var result = powerfullImbuCalculate.Calculate(criticalItems, Values.CriticalItems);
+                if (result < 0)
+                {
+                    lblCriticalResult.Text = $"If you buy 6 Gold Tokens you will LOSE {Math.Abs(result)}";
+                }
+                else
+                    lblCriticalResult.Text = $"If you buy 6 Gold Tokens you will SAVE {result}";
             }
         }
         #endregion

@@ -11,6 +11,9 @@ namespace ImbuingCalculatorWinForm
     public partial class formManaLeech : Form
     {
     private ICalculator calculator;
+        private ICalculate basicImbuCalculate = new BasicImbuing();
+        private ICalculate intricateImbuCalculate = new IntricateImbuing();
+        private ICalculate powerfullImbuCalculate = new PowerfullImbuing();
         public formManaLeech()
         {
             InitializeComponent();
@@ -46,6 +49,43 @@ namespace ImbuingCalculatorWinForm
             if (int.TryParse(txtRopeBeltPrice.Text, out int value))
             {
                 Values.RopeBeltPrice = value;
+                Values.ManaLeechItems[0] = Values.RopeBeltPrice;
+            }
+            if (Values.GoldTokenPrice == 0)
+            {
+                lblManaLeechResult.Text = "Gold Token field is empty...";
+            }
+            else if (Values.SilencerClawsPrice != 0 && Values.GrimeleechWingsPrice == 0)
+            {
+                var result = intricateImbuCalculate.Calculate(manaLeechlItems, Values.ManaLeechItems);
+                if (result < 0)
+                {
+                    lblManaLeechResult.Text = $"If you buy 4 Gold Tokens you will LOSE {Math.Abs(result)}";
+                }
+                else
+                    lblManaLeechResult.Text = $"If you buy 4 Gold Tokens you will SAVE {result}";
+
+
+            }
+            else if (Values.SilencerClawsPrice != 0 && Values.GrimeleechWingsPrice != 0)
+            {
+                var result = powerfullImbuCalculate.Calculate(manaLeechlItems, Values.ManaLeechItems);
+                if (result < 0)
+                {
+                    lblManaLeechResult.Text = $"If you buy 6 Gold Tokens you will LOSE {Math.Abs(result)}";
+                }
+                else
+                    lblManaLeechResult.Text = $"If you buy 6 Gold Tokens you will SAVE {result}";
+            }
+            else
+            {
+                var result = basicImbuCalculate.Calculate(manaLeechlItems, Values.ManaLeechItems);
+                if (result < 0)
+                {
+                    lblManaLeechResult.Text = $"If you buy 2 Gold Tokens you will LOSE {Math.Abs(result)}";
+                }
+                else
+                    lblManaLeechResult.Text = $"If you buy 2 Gold Tokens you will SAVE {result}";
             }
         }
 
@@ -54,6 +94,36 @@ namespace ImbuingCalculatorWinForm
             if (int.TryParse(txtSilencerClawsPrice.Text, out int value))
             {
                 Values.SilencerClawsPrice = value;
+                Values.ManaLeechItems[1] = Values.SilencerClawsPrice;
+
+            }
+            if (Values.GoldTokenPrice == 0)
+            {
+                lblManaLeechResult.Text = "Gold Token field is empty...";
+            }
+            else if (Values.RopeBeltPrice == 0)
+            {
+                lblManaLeechResult.Text = "Protective Charm field is empty...";
+            }
+            else if (Values.GrimeleechWingsPrice != 0)
+            {
+                var result = powerfullImbuCalculate.Calculate(manaLeechlItems, Values.ManaLeechItems);
+                if (result < 0)
+                {
+                    lblManaLeechResult.Text = $"If you buy 6 Gold Tokens you will LOSE {Math.Abs(result)}";
+                }
+                else
+                    lblManaLeechResult.Text = $"If you buy 6 Gold Tokens you will SAVE {result}";
+            }
+            else
+            {
+                var result = intricateImbuCalculate.Calculate(manaLeechlItems, Values.ManaLeechItems);
+                if (result < 0)
+                {
+                    lblManaLeechResult.Text = $"If you buy 4 Gold Tokens you will LOSE {Math.Abs(result)}";
+                }
+                else
+                    lblManaLeechResult.Text = $"If you buy 4 Gold Tokens you will SAVE {result}";
             }
         }
 
@@ -62,6 +132,32 @@ namespace ImbuingCalculatorWinForm
             if (int.TryParse(txtGrimeleechWingsPrice.Text, out int value))
             {
                 Values.GrimeleechWingsPrice = value;
+                Values.ManaLeechItems[2] = Values.GrimeleechWingsPrice;
+
+            }
+
+            if (Values.GoldTokenPrice == 0)
+            {
+                lblManaLeechResult.Text = "Gold Token field is empty...";
+            }
+            else if (Values.RopeBeltPrice == 0)
+            {
+                lblManaLeechResult.Text = "Protective Charm field is empty...";
+            }
+            else if (Values.SilencerClawsPrice == 0)
+            {
+                lblManaLeechResult.Text = "Sabretooth field is empty...";
+
+            }
+            else
+            {
+                var result = powerfullImbuCalculate.Calculate(manaLeechlItems, Values.ManaLeechItems);
+                if (result < 0)
+                {
+                    lblManaLeechResult.Text = $"If you buy 6 Gold Tokens you will LOSE {Math.Abs(result)}";
+                }
+                else
+                    lblManaLeechResult.Text = $"If you buy 6 Gold Tokens you will SAVE {result}";
             }
         }
         #endregion
