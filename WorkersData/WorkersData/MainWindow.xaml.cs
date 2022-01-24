@@ -20,9 +20,19 @@ namespace WorkersData
     /// </summary>
     public partial class MainWindow : Window
     {
+        private const int V = 3;
+
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+
+     
+
+        private void btnConstruction_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
