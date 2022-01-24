@@ -13,77 +13,94 @@ namespace ImbuingCalculatorWinForm
 {
     public partial class Form1 : Form
     {
-
+        private formCritical criticalDisplay;
+        private formManaLeech manaLeechDisplay;
+        private formLifeLeech lifeLeechDisplay;
         public Form1()
         {
             InitializeComponent();
+            InitializeCriticalImbuement();
+            InitializeManaLeechImbuement();
+            InitializeLifeLeechImbuement();
+
         }
+        #region Initialize Imbuement
+        public void InitializeCriticalImbuement()
+        {
+            lblTitle.Text = "Critical Imbuement";
+            formCritical critical_Display = new formCritical() { Dock = DockStyle.Fill, TopLevel = false, TopMost = true };
+            critical_Display.FormBorderStyle = FormBorderStyle.None;
 
+            this.criticalDisplay = critical_Display;
+        }
+        private void InitializeManaLeechImbuement()
+        {
+            lblTitle.Text = "Mana Leech Imbuement";
+            formManaLeech manaLeech_Display = new formManaLeech() { Dock = DockStyle.Fill, TopLevel = false, TopMost = true };
+            manaLeech_Display.FormBorderStyle = FormBorderStyle.None;
 
+            this.manaLeechDisplay = manaLeech_Display;
+        }
+        private void InitializeLifeLeechImbuement()
+        {
+            lblTitle.Text = "Life Leech Imbuement";
+            formLifeLeech lifeLeech_Display = new formLifeLeech() { Dock = DockStyle.Fill, TopLevel = false, TopMost = true };
+            lifeLeech_Display.FormBorderStyle = FormBorderStyle.None;
 
+            this.lifeLeechDisplay = lifeLeech_Display;
+        }
+        #endregion
+
+        #region Imbuing button click
         private void btnCritical_Click(object sender, EventArgs e)
         {
             btnCritical.BackColor = Color.FromArgb(46, 51, 73);
 
-            lblTitle.Text = "Critical Imbuement";
             this.pnlFormLoader.Controls.Clear();
-            formCritical critical_Vrb = new formCritical(txtGoldTokenPrice.Text) { Dock = DockStyle.Fill, TopLevel = false, TopMost = true };
-            critical_Vrb.FormBorderStyle = FormBorderStyle.None;
-            this.pnlFormLoader.Controls.Add(critical_Vrb);
-            critical_Vrb.Show();
-
+            this.pnlFormLoader.Controls.Add(this.criticalDisplay);
+            this.criticalDisplay.Show();
         }
 
         private void btnManaLeech_Click(object sender, EventArgs e)
         {
             btnManaLeech.BackColor = Color.FromArgb(46, 51, 73);
 
-            lblTitle.Text = "Mana Leech Imbuement";
             this.pnlFormLoader.Controls.Clear();
-            formManaLeech manaLeech_Vrb = new formManaLeech() { Dock = DockStyle.Fill, TopLevel = false, TopMost = true };
-            manaLeech_Vrb.FormBorderStyle = FormBorderStyle.None;
-            this.pnlFormLoader.Controls.Add(manaLeech_Vrb);
-            manaLeech_Vrb.Show();
-
+            this.pnlFormLoader.Controls.Add(this.manaLeechDisplay);
+            this.manaLeechDisplay.Show();
         }
 
         private void btnLifeLeech_Click(object sender, EventArgs e)
         {
             btnLifeLeech.BackColor = Color.FromArgb(46, 51, 73);
 
-            lblTitle.Text = "Life Leech Imbuement";
             this.pnlFormLoader.Controls.Clear();
-            formLifeLeech lifeLeech_Vrb = new formLifeLeech() { Dock = DockStyle.Fill, TopLevel = false, TopMost = true };
-            lifeLeech_Vrb.FormBorderStyle = FormBorderStyle.None;
-            this.pnlFormLoader.Controls.Add(lifeLeech_Vrb);
-            lifeLeech_Vrb.Show();
+            this.pnlFormLoader.Controls.Add(lifeLeechDisplay);
+            lifeLeechDisplay.Show();
         }
+        #endregion
 
-
-
+        #region Imbuing button leave
         private void btnCritical_Leave(object sender, EventArgs e)
         {
             btnCritical.BackColor = Color.FromArgb(24, 30, 54);
-
         }
 
         private void btnManaLeech_Leave(object sender, EventArgs e)
         {
             btnManaLeech.BackColor = Color.FromArgb(24, 30, 54);
-
         }
 
         private void btnLifeLeech_Leave(object sender, EventArgs e)
         {
             btnLifeLeech.BackColor = Color.FromArgb(24, 30, 54);
-
         }
+        #endregion
 
         private void btnExit_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
-
 
         private void txtGoldTokenPrice_TextChanged(object sender, EventArgs e)
         {
@@ -91,22 +108,10 @@ namespace ImbuingCalculatorWinForm
             {
                 Values.GoldTokenPrice = value;
             }
+
         }
     }
-    public static class Values
-    {
-        public static int GoldTokenPrice = 0;
-        public static int ProtectiveCharmPrice = 0;
-        public static int SabretoothPrice = 0;
-        public static int VexclawTokenPrice = 0;
-        public static int RopeBeltPrice = 0;
-        public static int SilencerClawsPrice = 0;
-        public static int GrimeleechWingsPrice = 0;
-        public static int VampireTeethPrice = 0;
-        public static int BloodyPincersPrice = 0;
-        public static int PieceOfDeadBrainPrice = 0;
-
-    }
+ 
 
     interface ICalculator
     {
