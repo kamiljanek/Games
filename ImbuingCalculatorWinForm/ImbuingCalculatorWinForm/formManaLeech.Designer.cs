@@ -1,4 +1,6 @@
 ﻿
+using System.Collections.Generic;
+
 namespace ImbuingCalculatorWinForm
 {
     public partial class formManaLeech
@@ -44,6 +46,7 @@ namespace ImbuingCalculatorWinForm
             this.txtRopeBeltPrice = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnCalculateManaLeech = new System.Windows.Forms.Button();
+            this.lblManaLeechResult = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -58,9 +61,9 @@ namespace ImbuingCalculatorWinForm
             this.txtManaLeechResult.Location = new System.Drawing.Point(9, 270);
             this.txtManaLeechResult.Multiline = true;
             this.txtManaLeechResult.Name = "txtManaLeechResult";
+            this.txtManaLeechResult.PlaceholderText = "PUSH CALCULATOR...";
             this.txtManaLeechResult.Size = new System.Drawing.Size(432, 20);
             this.txtManaLeechResult.TabIndex = 30;
-            this.txtManaLeechResult.PlaceholderText = "PUSH CALCULATOR...";
             this.txtManaLeechResult.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // pictureBox3
@@ -93,9 +96,9 @@ namespace ImbuingCalculatorWinForm
             this.txtGrimeleechWingsPrice.ForeColor = System.Drawing.SystemColors.ScrollBar;
             this.txtGrimeleechWingsPrice.Location = new System.Drawing.Point(323, 138);
             this.txtGrimeleechWingsPrice.Name = "txtGrimeleechWingsPrice";
+            this.txtGrimeleechWingsPrice.PlaceholderText = "Price...";
             this.txtGrimeleechWingsPrice.Size = new System.Drawing.Size(75, 14);
             this.txtGrimeleechWingsPrice.TabIndex = 27;
-            this.txtGrimeleechWingsPrice.PlaceholderText = "Price...";
             this.txtGrimeleechWingsPrice.TextChanged += new System.EventHandler(this.txtGrimeleechWingsPrice_TextChanged);
             // 
             // label4
@@ -139,9 +142,9 @@ namespace ImbuingCalculatorWinForm
             this.txtSilencerClawsPrice.ForeColor = System.Drawing.SystemColors.ScrollBar;
             this.txtSilencerClawsPrice.Location = new System.Drawing.Point(323, 88);
             this.txtSilencerClawsPrice.Name = "txtSilencerClawsPrice";
+            this.txtSilencerClawsPrice.PlaceholderText = "Price...";
             this.txtSilencerClawsPrice.Size = new System.Drawing.Size(75, 14);
             this.txtSilencerClawsPrice.TabIndex = 23;
-            this.txtSilencerClawsPrice.PlaceholderText = "Price...";
             this.txtSilencerClawsPrice.TextChanged += new System.EventHandler(this.txtSilencerClawsPrice_TextChanged);
             // 
             // label3
@@ -185,9 +188,9 @@ namespace ImbuingCalculatorWinForm
             this.txtRopeBeltPrice.ForeColor = System.Drawing.SystemColors.ScrollBar;
             this.txtRopeBeltPrice.Location = new System.Drawing.Point(323, 38);
             this.txtRopeBeltPrice.Name = "txtRopeBeltPrice";
+            this.txtRopeBeltPrice.PlaceholderText = "Price...";
             this.txtRopeBeltPrice.Size = new System.Drawing.Size(75, 14);
             this.txtRopeBeltPrice.TabIndex = 19;
-            this.txtRopeBeltPrice.PlaceholderText = "Price...";
             this.txtRopeBeltPrice.TextChanged += new System.EventHandler(this.txtRopeBeltPrice_TextChanged);
             // 
             // label1
@@ -217,12 +220,28 @@ namespace ImbuingCalculatorWinForm
             this.btnCalculateManaLeech.UseVisualStyleBackColor = true;
             this.btnCalculateManaLeech.Click += new System.EventHandler(this.btnCalculateManaLeech_Click);
             // 
+            // lblManaLeechResult
+            // 
+            this.lblManaLeechResult.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblManaLeechResult.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblManaLeechResult.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(161)))), ((int)(((byte)(176)))));
+            this.lblManaLeechResult.Location = new System.Drawing.Point(10, 230);
+            this.lblManaLeechResult.Name = "lblManaLeechResult";
+            this.lblManaLeechResult.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.lblManaLeechResult.Size = new System.Drawing.Size(430, 16);
+            this.lblManaLeechResult.TabIndex = 34;
+            this.lblManaLeechResult.Text = "CALCULATOR";
+            this.lblManaLeechResult.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // formManaLeech
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
             this.ClientSize = new System.Drawing.Size(450, 380);
+            this.Controls.Add(this.lblManaLeechResult);
             this.Controls.Add(this.btnCalculateManaLeech);
             this.Controls.Add(this.txtManaLeechResult);
             this.Controls.Add(this.pictureBox3);
@@ -250,6 +269,13 @@ namespace ImbuingCalculatorWinForm
 
         #endregion
 
+        List<ImbuingItem> manaLeechlItems = new List<ImbuingItem>()
+            {
+               new ImbuingItem("Rope Belt", 25) ,
+               new ImbuingItem("Silencer Claws", 25),
+               new ImbuingItem("Grimeleech Wings", 5)
+            };
+
         private System.Windows.Forms.TextBox txtManaLeechResult;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.Button btnGrimeleechWingsClear;
@@ -264,5 +290,6 @@ namespace ImbuingCalculatorWinForm
         private System.Windows.Forms.TextBox txtRopeBeltPrice;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnCalculateManaLeech;
+        private System.Windows.Forms.Label lblManaLeechResult;
     }
 }

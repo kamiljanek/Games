@@ -1,4 +1,6 @@
 ﻿
+using System.Collections.Generic;
+
 namespace ImbuingCalculatorWinForm
 {
     partial class formCritical
@@ -46,6 +48,7 @@ namespace ImbuingCalculatorWinForm
             this.label1 = new System.Windows.Forms.Label();
             this.btnCalculateCritical = new System.Windows.Forms.Button();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.lblCriticalResult = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -60,9 +63,9 @@ namespace ImbuingCalculatorWinForm
             this.txtCriticalResult.Location = new System.Drawing.Point(9, 270);
             this.txtCriticalResult.Multiline = true;
             this.txtCriticalResult.Name = "txtCriticalResult";
+            this.txtCriticalResult.PlaceholderText = "PUSH CALCULATOR...";
             this.txtCriticalResult.Size = new System.Drawing.Size(432, 20);
             this.txtCriticalResult.TabIndex = 30;
-            this.txtCriticalResult.PlaceholderText = "PUSH CALCULATOR...";
             this.txtCriticalResult.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // pictureBox3
@@ -223,12 +226,28 @@ namespace ImbuingCalculatorWinForm
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
+            // lblResult
+            // 
+            this.lblCriticalResult.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblCriticalResult.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblCriticalResult.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(161)))), ((int)(((byte)(176)))));
+            this.lblCriticalResult.Location = new System.Drawing.Point(10, 230);
+            this.lblCriticalResult.Name = "lblResult";
+            this.lblCriticalResult.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.lblCriticalResult.Size = new System.Drawing.Size(430, 16);
+            this.lblCriticalResult.TabIndex = 33;
+            this.lblCriticalResult.Text = "CALCULATOR";
+            this.lblCriticalResult.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // formCritical
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
             this.ClientSize = new System.Drawing.Size(450, 380);
+            this.Controls.Add(this.lblCriticalResult);
             this.Controls.Add(this.btnCalculateCritical);
             this.Controls.Add(this.txtCriticalResult);
             this.Controls.Add(this.pictureBox3);
@@ -252,9 +271,17 @@ namespace ImbuingCalculatorWinForm
             this.ResumeLayout(false);
             this.PerformLayout();
 
+
         }
 
         #endregion
+            List<ImbuingItem> criticalItems = new List<ImbuingItem>() 
+            {
+               new ImbuingItem("Protective Charm", 20) ,
+               new ImbuingItem("Sabretooth", 25),
+               new ImbuingItem("Vexclaw Talon", 5)
+
+            };
 
         private System.Windows.Forms.TextBox txtCriticalResult;
         private System.Windows.Forms.PictureBox pictureBox3;
@@ -271,5 +298,9 @@ namespace ImbuingCalculatorWinForm
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnCalculateCritical;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.Label lblCriticalResult;
+
     }
+
+
 }

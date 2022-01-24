@@ -1,5 +1,6 @@
 ﻿
 using System;
+using System.Collections.Generic;
 using System.Drawing;
 
 namespace ImbuingCalculatorWinForm
@@ -257,7 +258,7 @@ namespace ImbuingCalculatorWinForm
             this.ResumeLayout(false);
 
         }
-
+    
      
         #endregion
 
@@ -276,6 +277,61 @@ namespace ImbuingCalculatorWinForm
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel pnlFormLoader;
         
+    }
+    public static class Values
+    {
+        public static int GoldTokenPrice = 0;
+        public static int ProtectiveCharmPrice = 0;
+        public static int SabretoothPrice = 0;
+        public static int VexclawTokenPrice = 0;
+        public static int RopeBeltPrice = 0;
+        public static int SilencerClawsPrice = 0;
+        public static int GrimeleechWingsPrice = 0;
+        public static int VampireTeethPrice = 0;
+        public static int BloodyPincersPrice = 0;
+        public static int PieceOfDeadBrainPrice = 0;
+        public static int[] CriticalItems = new int[] { ProtectiveCharmPrice, SabretoothPrice, VexclawTokenPrice };
+        public static int[] ManaLeechItems = new int[] { RopeBeltPrice, SilencerClawsPrice, GrimeleechWingsPrice };
+        public static int[] LifeLeechItems = new int[] { VampireTeethPrice, BloodyPincersPrice, PieceOfDeadBrainPrice };
+    }
+    public class ImbuingItem
+    {
+        public string name;
+        public int amount;
+        public ImbuingItem(string name, int amount)
+        {
+            this.name = name;
+            this.amount = amount;
+        }
+     
+    }
+    interface ICalculate
+    {
+        public int Calculate(List<ImbuingItem> items, int[] itemPrices);
+    }
+    public class BasicImbuing : ICalculate
+    {
+
+        public int Calculate(List<ImbuingItem> items, int[] itemPrices)
+        {
+            return 2 * Values.GoldTokenPrice - (items[0].amount * itemPrices[0]);
+        }
+    }
+    public class IntricateImbuing : ICalculate
+    {
+
+        public int Calculate(List<ImbuingItem> items, int[] itemPrices)
+        {
+            return 4 * Values.GoldTokenPrice - ((items[0].amount * itemPrices[0])+(items[1].amount * itemPrices[1]));
+        }
+    }
+    public class PowerfullImbuing : ICalculate
+    {
+
+        public int Calculate(List<ImbuingItem> items, int[] itemPrices)
+        {
+            return 6 * Values.GoldTokenPrice - ((items[0].amount * itemPrices[0]) + (items[1].amount * itemPrices[1])+(items[2].amount * itemPrices[2]));
+        }
     }
 }
 
