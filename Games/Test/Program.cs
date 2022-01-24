@@ -7,97 +7,179 @@ namespace Test
     {
         static void Main(string[] args)
         {
-            Animal animal = new Animal();
-            animal.Age = 5;
-            animal.Name = "Franek";
-            //animal.Information();
-            
+            Duck superDuck = new Duck(new NoQuack(), new FastFly(), new BigDisplay());
+            superDuck.Quack();
+            superDuck.Fly();
+            superDuck.Display();
+            Pearson john = new Pearson(new RunWalk(), new HugeAmountEat());
+            john.Eat();
+            john.Walk();
         }
     }
-    interface IAnimal
-    {
-
-        int Age { get; set; }
-        string Name { get; set; }
-        //void Information()
-        //{
-        //    Console.WriteLine($"This entity have {Age} years old and he's name is {Name}");
-        //}
-        void Information();
-    }
-
-    interface IMechanical
-    {
-
-        int Old { get; set; }
-        string Problem { get; set; }
-        void Data()
-        {
-            Console.WriteLine($"This entity have {Old} years old and he's name is {Problem}");
-        }
-
-    }
-    class Animal : IAnimal, IMechanical
-    {
-        private int age;
-        private string name;
-
-        public int Age
-        {
-            get => age;
-            set
-            {
-                if (value < 1)
-                {
-                    age = 1;
-                }
-                else
-                {
-                    age = value;
-                }
-            }
-        }
-        public string Name
-        {
-            get => name;
-            set => name = value;
-        }
-        public int Old {get; set; }
-        public string Problem { get; set ; }
-
-        public void Information()
-        {
-            Console.WriteLine($"This entity have {Age} years old and he's name is {Name}");
-            var kaczka = new Kaczka(new SzybkieLatanie());
-        }
-    }
-
-    interface ILatanie
-    {
+  
+            //var kaczka = new Kaczka(new SzybkieLatanie());
         
-        void Lec();
-    }
-    class SzybkieLatanie : ILatanie
+    class Pearson
     {
-        public void Lec()
+        private IWalk walk;
+        private IEat eat;
+        public Pearson (IWalk walk, IEat eat)
         {
-            throw new NotImplementedException();
+            this.walk = walk;
+            this.eat = eat;
+        }
+       public void Walk()
+        {
+            this.walk.Walk();
+        }
+       public void Eat()
+        {
+            this.eat.Eat();
         }
     }
-    class PowolneLatanie : ILatanie
+    interface IWalk
     {
-        public void Lec()
+        void Walk();
+    }
+    class RunWalk : IWalk
+    {
+        public void Walk()
         {
-            throw new NotImplementedException();
+            Console.WriteLine("Im running");
         }
     }
-    class Kaczka
+    class SlowWalk : IWalk
     {
-        private ILatanie latanie;
+        public void Walk()
+        {
+            Console.WriteLine("Im normal walking");
+        }
+    }
+    interface IEat
+    {
+        void Eat();
+    }
+    class HugeAmountEat : IEat
+    {
+        public void Eat()
+        {
+            Console.WriteLine("I have whole table full of food");
+        }
+    }
+    class SmallAmountEat : IEat
+    {
+        public void Eat()
+        {
+            Console.WriteLine("I have only banana");
+        }
+    }
+    class Duck
+    {
+        private IQuackBehaviour quackBehaviour;
+        private IFlyBehaviour flyBehaviour;
+        private IDisplayBehaviour displayBehaviour;
+        public Duck(IQuackBehaviour qb, IFlyBehaviour fb, IDisplayBehaviour db)
+        {
+            quackBehaviour = qb;
+            flyBehaviour = fb;
+            displayBehaviour = db;
+        }
+        public void Quack()
+        {
+            quackBehaviour.Quack();
+        }
+        public void Fly()
+        {
+            flyBehaviour.Fly();
+        }
+        public void Display()
+        {
+            displayBehaviour.Display();
+        }
+    }
 
-        public Kaczka(ILatanie latanie)
+    interface IQuackBehaviour
+    {
+        void Quack();
+    }
+    class SimpleQuack : IQuackBehaviour
+    {
+        public void Quack()
         {
-            this.latanie = latanie;
+            Console.WriteLine("SimpleQuack");  
         }
     }
+    class NoQuack : IQuackBehaviour
+    {
+        public void Quack()
+        {
+            Console.WriteLine("NoQuack");
+        }
+    }
+
+    interface IFlyBehaviour
+    {
+        void Fly();
+    }
+    class SlowFly : IFlyBehaviour
+    {
+        public void Fly()
+        {
+            Console.WriteLine("SlowFly");
+        }
+    }
+    class FastFly : IFlyBehaviour
+    {
+        public void Fly()
+        {
+            Console.WriteLine("FastFly");
+        }
+    }
+    interface IDisplayBehaviour
+    {
+        void Display();
+    }
+    class BigDisplay : IDisplayBehaviour
+    {
+        public void Display()
+        {
+            Console.WriteLine("BigDisplay");
+        }
+    }
+    class SmallDisplay : IDisplayBehaviour
+    {
+        public void Display()
+        {
+            Console.WriteLine("SmallDisplay");
+        }
+    }
+
+    //interface ILatanie
+    //{
+
+    //    void Lec();
+    //}
+    //class SzybkieLatanie : ILatanie
+    //{
+    //    public void Lec()
+    //    {
+    //        throw new NotImplementedException();
+    //    }
+    //}
+    //class PowolneLatanie : ILatanie
+    //{
+    //    public void Lec()
+    //    {
+    //        throw new NotImplementedException();
+    //    }
+    //}
+    //class Kaczka
+    //{
+    //    private ILatanie latanie;
+
+    //    public Kaczka(ILatanie latanie)
+    //    {
+    //        this.latanie = latanie;
+    //    }
+    //}
 }
