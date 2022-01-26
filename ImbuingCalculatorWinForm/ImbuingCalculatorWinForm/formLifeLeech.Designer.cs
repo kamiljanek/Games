@@ -207,7 +207,7 @@ namespace ImbuingCalculatorWinForm
             // 
             // btnCalculateLifeLeech
             // 
-            this.btnCalculateLifeLeech.BackgroundImage = global::ImbuingCalculatorWinForm.Properties.Resources.calculator__1_;
+            this.btnCalculateLifeLeech.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnCalculateLifeLeech.BackgroundImage")));
             this.btnCalculateLifeLeech.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btnCalculateLifeLeech.FlatAppearance.BorderSize = 0;
             this.btnCalculateLifeLeech.FlatStyle = System.Windows.Forms.FlatStyle.Flat;

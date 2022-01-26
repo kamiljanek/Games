@@ -162,7 +162,7 @@ namespace ImbuingCalculatorWinForm
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::ImbuingCalculatorWinForm.Properties.Resources.protective_charm;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(9, 32);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(30, 30);
@@ -208,7 +208,7 @@ namespace ImbuingCalculatorWinForm
             // 
             // btnCalculateCritical
             // 
-            this.btnCalculateCritical.BackgroundImage = global::ImbuingCalculatorWinForm.Properties.Resources.calculator__1_;
+            this.btnCalculateCritical.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnCalculateCritical.BackgroundImage")));
             this.btnCalculateCritical.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btnCalculateCritical.FlatAppearance.BorderSize = 0;
             this.btnCalculateCritical.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -226,15 +226,15 @@ namespace ImbuingCalculatorWinForm
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
-            // lblResult
+            // lblCriticalResult
             // 
-            this.lblCriticalResult.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.lblCriticalResult.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lblCriticalResult.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lblCriticalResult.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(161)))), ((int)(((byte)(176)))));
             this.lblCriticalResult.Location = new System.Drawing.Point(10, 230);
-            this.lblCriticalResult.Name = "lblResult";
+            this.lblCriticalResult.Name = "lblCriticalResult";
             this.lblCriticalResult.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.lblCriticalResult.Size = new System.Drawing.Size(430, 16);
             this.lblCriticalResult.TabIndex = 33;
@@ -270,7 +270,6 @@ namespace ImbuingCalculatorWinForm
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
-
 
         }
 

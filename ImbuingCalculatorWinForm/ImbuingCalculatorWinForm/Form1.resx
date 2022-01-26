@@ -58,6 +58,16 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="pictureBox2.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        R0lGODlhIAAgAIMAAAAAANKfOKuBF15NAP/fjlI1AOazSf/rtnNLAPW8WfjCW////wAAAAAAAAAAAAAA
+        ACH/C05FVFNDQVBFMi4wAwEBAAAh+QQBBwALACwAAAAAIAAgAAAI9wAXCBxIsKDBgwgTKlzIsKHDhxAJ
+        AphIcWLEgwAOEEjAcQCAiwYBJAhAMoBHkBJHliR5EiUAAiwHyGT58WJGkgUEGEAgYADNiDcD5NTJs+dP
+        hy9xCli6c6lRkzUTUlQ5VCcBBEWferSIUaNSpgQOYM3q02TLkDBNOjVAIOzYrCrPFhTJ0oDdsAfEvkXA
+        8WjIuDJ9KmhboLDhAmnlpmTpVDCBw04TR507U2jjAAkMR445WeLEsgMaZ656gCZXqaCdWl5aWmhnhQBS
+        C1jdusDrhbGVZhaQ1jbI3JgTtMV5G2nZlYptHoeKUmLgwMUhVqzYvLr169ixBwQAOw==
+</value>
+  </data>
   <data name="btnLifeLeech.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         R0lGODlhIAAgAIemAFsEBx8aGH4MAIgLAAsHCI8KAHAPACoqLbcAIw4OGYsLABgRHJ8JADMzQcIAM4gK

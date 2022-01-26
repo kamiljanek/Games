@@ -73,7 +73,7 @@ namespace ImbuingCalculatorWinForm
             // 
             // pictureBox2
             // 
-            this.pictureBox2.Image = global::ImbuingCalculatorWinForm.Properties.Resources.gold_token1;
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
             this.pictureBox2.Location = new System.Drawing.Point(12, 458);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(30, 30);
