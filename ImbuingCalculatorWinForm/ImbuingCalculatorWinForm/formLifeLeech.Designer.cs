@@ -32,7 +32,6 @@ namespace ImbuingCalculatorWinForm
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(formLifeLeech));
-            this.txtLifeLeechResult = new System.Windows.Forms.TextBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.btnPieceOfDeadBrainClear = new System.Windows.Forms.Button();
             this.txtPieceOfDeadBrainPrice = new System.Windows.Forms.TextBox();
@@ -45,26 +44,11 @@ namespace ImbuingCalculatorWinForm
             this.btnVampireTeethClear = new System.Windows.Forms.Button();
             this.txtVampireTeethPrice = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.btnCalculateLifeLeech = new System.Windows.Forms.Button();
             this.lblLifeLeechResult = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // txtLifeLeechResult
-            // 
-            this.txtLifeLeechResult.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
-            this.txtLifeLeechResult.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtLifeLeechResult.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
-            this.txtLifeLeechResult.ForeColor = System.Drawing.SystemColors.ScrollBar;
-            this.txtLifeLeechResult.Location = new System.Drawing.Point(9, 270);
-            this.txtLifeLeechResult.Multiline = true;
-            this.txtLifeLeechResult.Name = "txtLifeLeechResult";
-            this.txtLifeLeechResult.PlaceholderText = "PUSH CLALULATOR...";
-            this.txtLifeLeechResult.Size = new System.Drawing.Size(432, 20);
-            this.txtLifeLeechResult.TabIndex = 43;
-            this.txtLifeLeechResult.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // pictureBox3
             // 
@@ -205,21 +189,6 @@ namespace ImbuingCalculatorWinForm
             this.label1.TabIndex = 31;
             this.label1.Text = "Vampire Teeth";
             // 
-            // btnCalculateLifeLeech
-            // 
-            this.btnCalculateLifeLeech.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnCalculateLifeLeech.BackgroundImage")));
-            this.btnCalculateLifeLeech.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnCalculateLifeLeech.FlatAppearance.BorderSize = 0;
-            this.btnCalculateLifeLeech.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCalculateLifeLeech.Font = new System.Drawing.Font("Nirmala UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnCalculateLifeLeech.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
-            this.btnCalculateLifeLeech.Location = new System.Drawing.Point(150, 320);
-            this.btnCalculateLifeLeech.Name = "btnCalculateLifeLeech";
-            this.btnCalculateLifeLeech.Size = new System.Drawing.Size(150, 45);
-            this.btnCalculateLifeLeech.TabIndex = 44;
-            this.btnCalculateLifeLeech.UseVisualStyleBackColor = true;
-            this.btnCalculateLifeLeech.Click += new System.EventHandler(this.btnCalculateLifeLeech_Click);
-            // 
             // lblLifeLeechResult
             // 
             this.lblLifeLeechResult.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -242,8 +211,6 @@ namespace ImbuingCalculatorWinForm
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
             this.ClientSize = new System.Drawing.Size(450, 380);
             this.Controls.Add(this.lblLifeLeechResult);
-            this.Controls.Add(this.btnCalculateLifeLeech);
-            this.Controls.Add(this.txtLifeLeechResult);
             this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.btnPieceOfDeadBrainClear);
             this.Controls.Add(this.txtPieceOfDeadBrainPrice);
@@ -276,7 +243,6 @@ namespace ImbuingCalculatorWinForm
                new ImbuingItem("Piece Of Dead Brain", 5)
 
             };
-        private System.Windows.Forms.TextBox txtLifeLeechResult;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.Button btnPieceOfDeadBrainClear;
         private System.Windows.Forms.TextBox txtPieceOfDeadBrainPrice;
@@ -289,7 +255,6 @@ namespace ImbuingCalculatorWinForm
         private System.Windows.Forms.Button btnVampireTeethClear;
         private System.Windows.Forms.TextBox txtVampireTeethPrice;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button btnCalculateLifeLeech;
         private System.Windows.Forms.Label lblLifeLeechResult;
     }
 }

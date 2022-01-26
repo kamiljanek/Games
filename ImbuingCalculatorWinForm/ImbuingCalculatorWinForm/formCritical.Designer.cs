@@ -33,7 +33,6 @@ namespace ImbuingCalculatorWinForm
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(formCritical));
-            this.txtCriticalResult = new System.Windows.Forms.TextBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.btnVexclawTalonClear = new System.Windows.Forms.Button();
             this.txtVexclawTalonPrice = new System.Windows.Forms.TextBox();
@@ -46,27 +45,12 @@ namespace ImbuingCalculatorWinForm
             this.btnProtectiveCharmClear = new System.Windows.Forms.Button();
             this.txtProtectiveCharmPrice = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.btnCalculateCritical = new System.Windows.Forms.Button();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.lblCriticalResult = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // txtCriticalResult
-            // 
-            this.txtCriticalResult.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
-            this.txtCriticalResult.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtCriticalResult.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
-            this.txtCriticalResult.ForeColor = System.Drawing.SystemColors.ScrollBar;
-            this.txtCriticalResult.Location = new System.Drawing.Point(9, 270);
-            this.txtCriticalResult.Multiline = true;
-            this.txtCriticalResult.Name = "txtCriticalResult";
-            this.txtCriticalResult.PlaceholderText = "PUSH CALCULATOR...";
-            this.txtCriticalResult.Size = new System.Drawing.Size(432, 20);
-            this.txtCriticalResult.TabIndex = 30;
-            this.txtCriticalResult.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // pictureBox3
             // 
@@ -206,21 +190,6 @@ namespace ImbuingCalculatorWinForm
             this.label1.TabIndex = 18;
             this.label1.Text = "Protective Charm";
             // 
-            // btnCalculateCritical
-            // 
-            this.btnCalculateCritical.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnCalculateCritical.BackgroundImage")));
-            this.btnCalculateCritical.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnCalculateCritical.FlatAppearance.BorderSize = 0;
-            this.btnCalculateCritical.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCalculateCritical.Font = new System.Drawing.Font("Nirmala UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnCalculateCritical.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
-            this.btnCalculateCritical.Location = new System.Drawing.Point(150, 320);
-            this.btnCalculateCritical.Name = "btnCalculateCritical";
-            this.btnCalculateCritical.Size = new System.Drawing.Size(150, 45);
-            this.btnCalculateCritical.TabIndex = 32;
-            this.btnCalculateCritical.UseVisualStyleBackColor = true;
-            this.btnCalculateCritical.Click += new System.EventHandler(this.btnCalculateCritical_Click);
-            // 
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.Name = "contextMenuStrip1";
@@ -248,8 +217,6 @@ namespace ImbuingCalculatorWinForm
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
             this.ClientSize = new System.Drawing.Size(450, 380);
             this.Controls.Add(this.lblCriticalResult);
-            this.Controls.Add(this.btnCalculateCritical);
-            this.Controls.Add(this.txtCriticalResult);
             this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.btnVexclawTalonClear);
             this.Controls.Add(this.txtVexclawTalonPrice);
@@ -281,8 +248,6 @@ namespace ImbuingCalculatorWinForm
                new ImbuingItem("Vexclaw Talon", 5)
 
             };
-
-        private System.Windows.Forms.TextBox txtCriticalResult;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.Button btnVexclawTalonClear;
         private System.Windows.Forms.TextBox txtVexclawTalonPrice;
@@ -295,9 +260,8 @@ namespace ImbuingCalculatorWinForm
         private System.Windows.Forms.Button btnProtectiveCharmClear;
         private System.Windows.Forms.TextBox txtProtectiveCharmPrice;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button btnCalculateCritical;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
-        private System.Windows.Forms.Label lblCriticalResult;
+        public System.Windows.Forms.Label lblCriticalResult;
 
     }
 
