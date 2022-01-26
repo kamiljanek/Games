@@ -46,149 +46,88 @@ namespace ImbuingCalculatorWinForm
         #region "txt field" change text
         private void txtRopeBeltPrice_TextChanged(object sender, EventArgs e)
         {
-            if (int.TryParse(txtRopeBeltPrice.Text, out int value))
-            {
-                Values.RopeBeltPrice = value;
-                Values.ManaLeechItems[0] = Values.RopeBeltPrice;
-            }
+            Values.ManaLeechItems[0] = int.TryParse(txtRopeBeltPrice.Text, out int value) ? value : 0;
+
             if (Values.GoldTokenPrice == 0)
             {
-                lblManaLeechResult.Text = "Gold Token field is empty...";
+                Messages.GoldTokenEmpty(lblManaLeechResult);
             }
-            else if (Values.SilencerClawsPrice != 0 && Values.GrimeleechWingsPrice == 0)
-            {
-                var result = intricateImbuCalculate.Calculate(manaLeechlItems, Values.ManaLeechItems);
-                if (result < 0)
-                {
-                    lblManaLeechResult.Text = $"If you buy 4 Gold Tokens you will LOSE {Math.Abs(result)}";
-                }
-                else
-                    lblManaLeechResult.Text = $"If you buy 4 Gold Tokens you will SAVE {result}";
 
-
-            }
-            else if (Values.SilencerClawsPrice != 0 && Values.GrimeleechWingsPrice != 0)
+            else if (Values.ManaLeechItems[0] != 0 && Values.ManaLeechItems[1] != 0 && Values.ManaLeechItems[2] == 0)
             {
-                var result = powerfullImbuCalculate.Calculate(manaLeechlItems, Values.ManaLeechItems);
-                if (result < 0)
-                {
-                    lblManaLeechResult.Text = $"If you buy 6 Gold Tokens you will LOSE {Math.Abs(result)}";
-                }
-                else
-                    lblManaLeechResult.Text = $"If you buy 6 Gold Tokens you will SAVE {result}";
+                var result = intricateImbuCalculate.Calculate(manaLeechItems, Values.ManaLeechItems);
+                intricateImbuCalculate.IfStatement(result, lblManaLeechResult);
             }
+
+            else if (Values.ManaLeechItems[0] != 0 && Values.ManaLeechItems[1] != 0 && Values.ManaLeechItems[2] != 0)
+            {
+                var result = powerfullImbuCalculate.Calculate(manaLeechItems, Values.ManaLeechItems);
+                powerfullImbuCalculate.IfStatement(result, lblManaLeechResult);
+            }
+
             else
             {
-                var result = basicImbuCalculate.Calculate(manaLeechlItems, Values.ManaLeechItems);
-                if (result < 0)
+                if (Values.ManaLeechItems[0] != 0)
                 {
-                    lblManaLeechResult.Text = $"If you buy 2 Gold Tokens you will LOSE {Math.Abs(result)}";
+                    var result = basicImbuCalculate.Calculate(manaLeechItems, Values.ManaLeechItems);
+                    basicImbuCalculate.IfStatement(result, lblManaLeechResult);
                 }
                 else
-                    lblManaLeechResult.Text = $"If you buy 2 Gold Tokens you will SAVE {result}";
+                {
+                    Messages.WrongInputMessage(lblManaLeechResult);
+                }
             }
         }
 
         private void txtSilencerClawsPrice_TextChanged(object sender, EventArgs e)
         {
-            if (int.TryParse(txtSilencerClawsPrice.Text, out int value))
-            {
-                Values.SilencerClawsPrice = value;
-                Values.ManaLeechItems[1] = Values.SilencerClawsPrice;
+            Values.ManaLeechItems[1] = int.TryParse(txtSilencerClawsPrice.Text, out int value) ? value : 0;
 
-            }
             if (Values.GoldTokenPrice == 0)
             {
-                lblManaLeechResult.Text = "Gold Token field is empty...";
+                Messages.GoldTokenEmpty(lblManaLeechResult);
             }
-            else if (Values.RopeBeltPrice == 0)
+
+            else if (Values.ManaLeechItems[0] == 0 || Values.ManaLeechItems[1] == 0)
             {
-                lblManaLeechResult.Text = "Protective Charm field is empty...";
+                Messages.WrongInputMessage(lblManaLeechResult);
             }
-            else if (Values.GrimeleechWingsPrice != 0)
+
+            else if (Values.ManaLeechItems[0] != 0 && Values.ManaLeechItems[1] != 0 && Values.ManaLeechItems[2] != 0)
             {
-                var result = powerfullImbuCalculate.Calculate(manaLeechlItems, Values.ManaLeechItems);
-                if (result < 0)
-                {
-                    lblManaLeechResult.Text = $"If you buy 6 Gold Tokens you will LOSE {Math.Abs(result)}";
-                }
-                else
-                    lblManaLeechResult.Text = $"If you buy 6 Gold Tokens you will SAVE {result}";
+                var result = powerfullImbuCalculate.Calculate(manaLeechItems, Values.ManaLeechItems);
+                powerfullImbuCalculate.IfStatement(result, lblManaLeechResult);
             }
+
             else
             {
-                var result = intricateImbuCalculate.Calculate(manaLeechlItems, Values.ManaLeechItems);
-                if (result < 0)
-                {
-                    lblManaLeechResult.Text = $"If you buy 4 Gold Tokens you will LOSE {Math.Abs(result)}";
-                }
-                else
-                    lblManaLeechResult.Text = $"If you buy 4 Gold Tokens you will SAVE {result}";
+                var result = intricateImbuCalculate.Calculate(manaLeechItems, Values.ManaLeechItems);
+                intricateImbuCalculate.IfStatement(result, lblManaLeechResult);
             }
         }
 
         private void txtGrimeleechWingsPrice_TextChanged(object sender, EventArgs e)
         {
-            if (int.TryParse(txtGrimeleechWingsPrice.Text, out int value))
-            {
-                Values.GrimeleechWingsPrice = value;
-                Values.ManaLeechItems[2] = Values.GrimeleechWingsPrice;
-
-            }
+            Values.ManaLeechItems[2] = int.TryParse(txtGrimeleechWingsPrice.Text, out int value) ? value : 0;
 
             if (Values.GoldTokenPrice == 0)
             {
-                lblManaLeechResult.Text = "Gold Token field is empty...";
+                Messages.GoldTokenEmpty(lblManaLeechResult);
             }
-            else if (Values.RopeBeltPrice == 0)
+            else if (Values.ManaLeechItems[0] == 0 || Values.ManaLeechItems[1] == 0 || Values.ManaLeechItems[2] == 0)
             {
-                lblManaLeechResult.Text = "Protective Charm field is empty...";
+                Messages.WrongInputMessage(lblManaLeechResult);
             }
-            else if (Values.SilencerClawsPrice == 0)
-            {
-                lblManaLeechResult.Text = "Sabretooth field is empty...";
 
-            }
             else
             {
-                var result = powerfullImbuCalculate.Calculate(manaLeechlItems, Values.ManaLeechItems);
-                if (result < 0)
-                {
-                    lblManaLeechResult.Text = $"If you buy 6 Gold Tokens you will LOSE {Math.Abs(result)}";
-                }
-                else
-                    lblManaLeechResult.Text = $"If you buy 6 Gold Tokens you will SAVE {result}";
+                var result = powerfullImbuCalculate.Calculate(manaLeechItems, Values.ManaLeechItems);
+                powerfullImbuCalculate.IfStatement(result, lblManaLeechResult);
             }
         }
         #endregion
 
-        private void btnCalculateManaLeech_Click(object sender, EventArgs e)
-        {
-            int result = 0;
-            try
-            {
-                result = calculator.Calculate(Values.RopeBeltPrice, Values.SilencerClawsPrice, Values.GrimeleechWingsPrice);
 
-                if (result < 0)
-                {
-                    txtManaLeechResult.ForeColor = Color.Green;
-                    txtManaLeechResult.Text = $"If you will buy Gold Tokens you will save {Math.Abs(result)}";
-                }
-                else
-                {
-                    txtManaLeechResult.ForeColor = Color.Red;
-                    txtManaLeechResult.Text = $"If you will buy Gold Tokens you will lose {result}";
-                }
-            }
-
-            catch (Exception exception)
-            {
-                txtManaLeechResult.ForeColor = Color.Red;
-                txtManaLeechResult.Text = $"{exception.Message}";
-            }
-
-
-        }
     }
 
     

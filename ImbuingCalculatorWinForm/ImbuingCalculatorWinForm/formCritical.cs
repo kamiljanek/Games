@@ -50,148 +50,88 @@ namespace ImbuingCalculatorWinForm
         #region "txt field" change text 
         private void txtProtectiveCharmPrice_TextChanged(object sender, EventArgs e)
         {
-            if (int.TryParse(txtProtectiveCharmPrice.Text, out int value))
-            {
-                Values.ProtectiveCharmPrice = value;
-                Values.CriticalItems[0] = Values.ProtectiveCharmPrice;
-            }
+            Values.CriticalItems[0] = int.TryParse(txtProtectiveCharmPrice.Text, out int value) ? value : 0;
+
             if (Values.GoldTokenPrice == 0)
             {
-                lblCriticalResult.Text = "Gold Token field is empty...";
+                Messages.GoldTokenEmpty(lblCriticalResult);
             }
-            else if (Values.SabretoothPrice != 0 && Values.VexclawTokenPrice == 0)
+
+            else if (Values.CriticalItems[0] != 0 && Values.CriticalItems[1] != 0 && Values.CriticalItems[2] == 0)
             {
                 var result = intricateImbuCalculate.Calculate(criticalItems, Values.CriticalItems);
-                if (result < 0)
-                {
-                    lblCriticalResult.Text = $"If you buy 4 Gold Tokens you will LOSE {Math.Abs(result)}";
-                }
-                else
-                    lblCriticalResult.Text = $"If you buy 4 Gold Tokens you will SAVE {result}";
-
-
+                intricateImbuCalculate.IfStatement(result, lblCriticalResult);
             }
-            else if (Values.SabretoothPrice != 0 && Values.VexclawTokenPrice != 0)
+
+            else if (Values.CriticalItems[0] != 0 && Values.CriticalItems[1] != 0 && Values.CriticalItems[2] != 0)
             {
                 var result = powerfullImbuCalculate.Calculate(criticalItems, Values.CriticalItems);
-                if (result < 0)
-                {
-                    lblCriticalResult.Text = $"If you buy 6 Gold Tokens you will LOSE {Math.Abs(result)}";
-                }
-                else
-                    lblCriticalResult.Text = $"If you buy 6 Gold Tokens you will SAVE {result}";
+                powerfullImbuCalculate.IfStatement(result, lblCriticalResult);
             }
+
             else
             {
-                var result = basicImbuCalculate.Calculate(criticalItems, Values.CriticalItems);
-                if (result < 0)
+                if (Values.CriticalItems[0] != 0)
                 {
-                    lblCriticalResult.Text = $"If you buy 2 Gold Tokens you will LOSE {Math.Abs(result)}";
+                    var result = basicImbuCalculate.Calculate(criticalItems, Values.CriticalItems);
+                    basicImbuCalculate.IfStatement(result, lblCriticalResult);
                 }
                 else
-                    lblCriticalResult.Text = $"If you buy 2 Gold Tokens you will SAVE {result}";
+                {
+                    Messages.WrongInputMessage(lblCriticalResult);
+                }
             }
         }
 
+
         private void txtSabretoothPrice_TextChanged(object sender, EventArgs e)
         {
-            if (int.TryParse(txtSabretoothPrice.Text, out int value))
-            {
-                Values.SabretoothPrice = value;
-                Values.CriticalItems[1] = Values.SabretoothPrice;
-            }
+            Values.CriticalItems[1] = int.TryParse(txtSabretoothPrice.Text, out int value) ? value : 0;
+
             if (Values.GoldTokenPrice == 0)
             {
-                lblCriticalResult.Text = "Gold Token field is empty...";
+                Messages.GoldTokenEmpty(lblCriticalResult);
             }
-            else if (Values.ProtectiveCharmPrice == 0)
+
+            else if (Values.CriticalItems[0] == 0 || Values.CriticalItems[1] == 0)
             {
-                lblCriticalResult.Text = "Protective Charm field is empty...";
+                Messages.WrongInputMessage(lblCriticalResult);
             }
-            else if (Values.VexclawTokenPrice != 0)
+
+            else if (Values.CriticalItems[0] != 0 && Values.CriticalItems[1] != 0 && Values.CriticalItems[2] != 0)
             {
                 var result = powerfullImbuCalculate.Calculate(criticalItems, Values.CriticalItems);
-                if (result < 0)
-                {
-                    lblCriticalResult.Text = $"If you buy 6 Gold Tokens you will LOSE {Math.Abs(result)}";
-                }
-                else
-                    lblCriticalResult.Text = $"If you buy 6 Gold Tokens you will SAVE {result}";
+                powerfullImbuCalculate.IfStatement(result, lblCriticalResult);
             }
+
             else
             {
                 var result = intricateImbuCalculate.Calculate(criticalItems, Values.CriticalItems);
-                if (result < 0)
-                {
-                    lblCriticalResult.Text = $"If you buy 4 Gold Tokens you will LOSE {Math.Abs(result)}";
-                }
-                else
-                    lblCriticalResult.Text = $"If you buy 4 Gold Tokens you will SAVE {result}";
+                intricateImbuCalculate.IfStatement(result, lblCriticalResult);
             }
         }
 
         private void txtVexclawTalonPrice_TextChanged(object sender, EventArgs e)
         {
-            if (int.TryParse(txtVexclawTalonPrice.Text, out int value))
-            {
-                Values.VexclawTokenPrice = value;
-                Values.CriticalItems[2] = Values.VexclawTokenPrice;
-            }
+            Values.CriticalItems[2] = int.TryParse(txtVexclawTalonPrice.Text, out int value) ? value : 0;
 
             if (Values.GoldTokenPrice == 0)
             {
-                lblCriticalResult.Text = "Gold Token field is empty...";
+                Messages.GoldTokenEmpty(lblCriticalResult);
             }
-            else if (Values.ProtectiveCharmPrice == 0)
+            else if (Values.CriticalItems[0] == 0 || Values.CriticalItems[1] == 0 || Values.CriticalItems[2] == 0)
             {
-                lblCriticalResult.Text = "Protective Charm field is empty...";
+                Messages.WrongInputMessage(lblCriticalResult);
             }
-            else if (Values.SabretoothPrice == 0)
-            {
-                lblCriticalResult.Text = "Sabretooth field is empty...";
 
-            }
             else
             {
                 var result = powerfullImbuCalculate.Calculate(criticalItems, Values.CriticalItems);
-                if (result < 0)
-                {
-                    lblCriticalResult.Text = $"If you buy 6 Gold Tokens you will LOSE {Math.Abs(result)}";
-                }
-                else
-                    lblCriticalResult.Text = $"If you buy 6 Gold Tokens you will SAVE {result}";
+                powerfullImbuCalculate.IfStatement(result, lblCriticalResult);
             }
         }
         #endregion
 
-
-        private void btnCalculateCritical_Click(object sender, EventArgs e)
-        {
-            int result = 0;
-            try
-            {
-                result = calculator.Calculate(Values.ProtectiveCharmPrice, Values.SabretoothPrice, Values.VexclawTokenPrice);
-
-                if (result < 0)
-                {
-                    txtCriticalResult.ForeColor = Color.Green;
-                    txtCriticalResult.Text = $"If you will buy Gold Tokens you will save {Math.Abs(result)}";
-                }
-                else
-                {
-                    txtCriticalResult.ForeColor = Color.Red;
-                    txtCriticalResult.Text = $"If you will buy Gold Tokens you will lose {result}";
-                }
-            }
-
-            catch (Exception exception)
-            {
-                txtCriticalResult.ForeColor = Color.Red;
-                txtCriticalResult.Text = $"{exception.Message}";
-            }
-
-
-        }
-
     }
 }
+

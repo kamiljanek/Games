@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Windows.Forms;
 
 namespace ImbuingCalculatorWinForm
 {
@@ -305,32 +306,102 @@ namespace ImbuingCalculatorWinForm
         }
      
     }
-    interface ICalculate
+ 
+    
+
+    public static class Messages
+    {
+        public static string BasicResultMessage = "If you will buy 2 Gold Tokens you will ";
+        public static string IntricateResultMessage = "If you will buy 4 Gold Tokens you will ";
+        public static string PowerfullResultMessage = "If you will buy 6 Gold Tokens you will ";
+
+        public static void LoseColor(Label label)
+        {
+            label.ForeColor = Color.Red;
+        }
+        public static void SaveColor(Label label)
+        {
+            label.ForeColor = Color.Green;
+        }
+        public static void GoldTokenEmpty(Label label)
+        {
+            label.ForeColor = Color.Gold;
+            label.Text = "Gold Token field is empty...";
+        }
+        public static void WrongInputMessage(Label label)
+        {
+            label.ForeColor = Color.Red;
+            label.Text = "Wrong item lable input...";
+        }
+    }
+   interface ICalculate
     {
         public int Calculate(List<ImbuingItem> items, int[] itemPrices);
+        public string LoseResult(int result);
+        public string SaveResult(int result);
+        public void IfStatement(int result, Label label);
     }
     public class BasicImbuing : ICalculate
     {
+        public int Calculate(List<ImbuingItem> items, int[] itemPrices) => 2 * Values.GoldTokenPrice - (items[0].amount * itemPrices[0]);
 
-        public int Calculate(List<ImbuingItem> items, int[] itemPrices)
+        public void IfStatement(int result, Label label)
         {
-            return 2 * Values.GoldTokenPrice - (items[0].amount * itemPrices[0]);
+            if (result > 0)
+            {
+                Messages.LoseColor(label);
+                label.Text = LoseResult(result);
+            }
+            else
+            {
+                Messages.SaveColor(label);
+                label.Text = SaveResult(result);
+            }
         }
+
+        public string LoseResult(int result) => $"{Messages.BasicResultMessage} LOSE {result}";
+        public string SaveResult(int result) => $"{Messages.BasicResultMessage} SAVE {Math.Abs(result)}";
     }
+
+
     public class IntricateImbuing : ICalculate
     {
-
-        public int Calculate(List<ImbuingItem> items, int[] itemPrices)
+        public int Calculate(List<ImbuingItem> items, int[] itemPrices) => 4 * Values.GoldTokenPrice - ((items[0].amount * itemPrices[0]) + (items[1].amount * itemPrices[1]));
+        public string LoseResult(int result) => $"{Messages.IntricateResultMessage} LOSE {result}";
+        public string SaveResult(int result) => $"{Messages.IntricateResultMessage} SAVE {Math.Abs(result)}";
+        public void IfStatement(int result, Label label)
         {
-            return 4 * Values.GoldTokenPrice - ((items[0].amount * itemPrices[0])+(items[1].amount * itemPrices[1]));
+            if (result > 0)
+            {
+                Messages.LoseColor(label);
+                label.Text = LoseResult(result);
+            }
+            else
+            {
+                Messages.SaveColor(label);
+                label.Text = SaveResult(result);
+            }
         }
     }
+
+
     public class PowerfullImbuing : ICalculate
     {
-
-        public int Calculate(List<ImbuingItem> items, int[] itemPrices)
+        public int Calculate(List<ImbuingItem> items, int[] itemPrices) => 6 * Values.GoldTokenPrice - ((items[0].amount* itemPrices[0]) + (items[1].amount* itemPrices[1])+(items[2].amount* itemPrices[2]));
+        public string LoseResult(int result) => $"{Messages.PowerfullResultMessage} LOSE {result}";
+        public string SaveResult(int result) => $"{Messages.PowerfullResultMessage} SAVE {Math.Abs(result)}";
+        public void IfStatement(int result, Label label)
         {
-            return 6 * Values.GoldTokenPrice - ((items[0].amount * itemPrices[0]) + (items[1].amount * itemPrices[1])+(items[2].amount * itemPrices[2]));
+            if (result > 0)
+            {
+                Messages.LoseColor(label);
+                label.Text = LoseResult(result);
+            }
+            else
+            {
+                Messages.SaveColor(label);
+                label.Text = SaveResult(result);
+            }
         }
     }
 }

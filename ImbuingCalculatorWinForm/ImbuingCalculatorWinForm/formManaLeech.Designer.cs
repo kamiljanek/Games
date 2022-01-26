@@ -32,7 +32,6 @@ namespace ImbuingCalculatorWinForm
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(formManaLeech));
-            this.txtManaLeechResult = new System.Windows.Forms.TextBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.btnGrimeleechWingsClear = new System.Windows.Forms.Button();
             this.txtGrimeleechWingsPrice = new System.Windows.Forms.TextBox();
@@ -45,26 +44,11 @@ namespace ImbuingCalculatorWinForm
             this.btnRopeBeltClear = new System.Windows.Forms.Button();
             this.txtRopeBeltPrice = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.btnCalculateManaLeech = new System.Windows.Forms.Button();
             this.lblManaLeechResult = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // txtManaLeechResult
-            // 
-            this.txtManaLeechResult.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
-            this.txtManaLeechResult.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtManaLeechResult.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
-            this.txtManaLeechResult.ForeColor = System.Drawing.SystemColors.ScrollBar;
-            this.txtManaLeechResult.Location = new System.Drawing.Point(9, 270);
-            this.txtManaLeechResult.Multiline = true;
-            this.txtManaLeechResult.Name = "txtManaLeechResult";
-            this.txtManaLeechResult.PlaceholderText = "PUSH CALCULATOR...";
-            this.txtManaLeechResult.Size = new System.Drawing.Size(432, 20);
-            this.txtManaLeechResult.TabIndex = 30;
-            this.txtManaLeechResult.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // pictureBox3
             // 
@@ -205,21 +189,6 @@ namespace ImbuingCalculatorWinForm
             this.label1.TabIndex = 18;
             this.label1.Text = "Rope Belt";
             // 
-            // btnCalculateManaLeech
-            // 
-            this.btnCalculateManaLeech.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnCalculateManaLeech.BackgroundImage")));
-            this.btnCalculateManaLeech.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnCalculateManaLeech.FlatAppearance.BorderSize = 0;
-            this.btnCalculateManaLeech.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCalculateManaLeech.Font = new System.Drawing.Font("Nirmala UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnCalculateManaLeech.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
-            this.btnCalculateManaLeech.Location = new System.Drawing.Point(150, 320);
-            this.btnCalculateManaLeech.Name = "btnCalculateManaLeech";
-            this.btnCalculateManaLeech.Size = new System.Drawing.Size(150, 45);
-            this.btnCalculateManaLeech.TabIndex = 31;
-            this.btnCalculateManaLeech.UseVisualStyleBackColor = true;
-            this.btnCalculateManaLeech.Click += new System.EventHandler(this.btnCalculateManaLeech_Click);
-            // 
             // lblManaLeechResult
             // 
             this.lblManaLeechResult.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -242,8 +211,6 @@ namespace ImbuingCalculatorWinForm
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
             this.ClientSize = new System.Drawing.Size(450, 380);
             this.Controls.Add(this.lblManaLeechResult);
-            this.Controls.Add(this.btnCalculateManaLeech);
-            this.Controls.Add(this.txtManaLeechResult);
             this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.btnGrimeleechWingsClear);
             this.Controls.Add(this.txtGrimeleechWingsPrice);
@@ -269,14 +236,12 @@ namespace ImbuingCalculatorWinForm
 
         #endregion
 
-        List<ImbuingItem> manaLeechlItems = new List<ImbuingItem>()
+        List<ImbuingItem> manaLeechItems = new List<ImbuingItem>()
             {
                new ImbuingItem("Rope Belt", 25) ,
                new ImbuingItem("Silencer Claws", 25),
                new ImbuingItem("Grimeleech Wings", 5)
             };
-
-        private System.Windows.Forms.TextBox txtManaLeechResult;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.Button btnGrimeleechWingsClear;
         private System.Windows.Forms.TextBox txtGrimeleechWingsPrice;
@@ -289,7 +254,6 @@ namespace ImbuingCalculatorWinForm
         private System.Windows.Forms.Button btnRopeBeltClear;
         private System.Windows.Forms.TextBox txtRopeBeltPrice;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button btnCalculateManaLeech;
         private System.Windows.Forms.Label lblManaLeechResult;
     }
 }
