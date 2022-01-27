@@ -10,14 +10,13 @@ namespace ImbuingCalculatorWinForm
 {
     public partial class formManaLeech : Form
     {
-    private ICalculator calculator;
         private ICalculate basicImbuCalculate = new BasicImbuing();
         private ICalculate intricateImbuCalculate = new IntricateImbuing();
         private ICalculate powerfullImbuCalculate = new PowerfullImbuing();
+
         public formManaLeech()
         {
             InitializeComponent();
-            calculator = new ManaLeechCalculator();
         }
 
         #region "X" buttons

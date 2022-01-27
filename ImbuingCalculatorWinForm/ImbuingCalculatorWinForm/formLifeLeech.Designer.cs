@@ -236,7 +236,7 @@ namespace ImbuingCalculatorWinForm
 
         #endregion
 
-        List<ImbuingItem> lifeLeechItems = new List<ImbuingItem>()
+        public List<ImbuingItem> lifeLeechItems = new List<ImbuingItem>()
             {
                new ImbuingItem("Vampire Teeth", 25) ,
                new ImbuingItem("Bloody Pincers", 15),
@@ -255,6 +255,6 @@ namespace ImbuingCalculatorWinForm
         private System.Windows.Forms.Button btnVampireTeethClear;
         private System.Windows.Forms.TextBox txtVampireTeethPrice;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label lblLifeLeechResult;
+        public System.Windows.Forms.Label lblLifeLeechResult;
     }
 }

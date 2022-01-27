@@ -236,7 +236,7 @@ namespace ImbuingCalculatorWinForm
 
         #endregion
 
-        List<ImbuingItem> manaLeechItems = new List<ImbuingItem>()
+        public List<ImbuingItem> manaLeechItems = new List<ImbuingItem>()
             {
                new ImbuingItem("Rope Belt", 25) ,
                new ImbuingItem("Silencer Claws", 25),
@@ -254,6 +254,6 @@ namespace ImbuingCalculatorWinForm
         private System.Windows.Forms.Button btnRopeBeltClear;
         private System.Windows.Forms.TextBox txtRopeBeltPrice;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label lblManaLeechResult;
+        public System.Windows.Forms.Label lblManaLeechResult;
     }
 }

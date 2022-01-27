@@ -10,7 +10,6 @@ namespace ImbuingCalculatorWinForm
 {
     public partial class formLifeLeech : Form
     {
-        private ICalculator calculator;
         private ICalculate basicImbuCalculate = new BasicImbuing();
         private ICalculate intricateImbuCalculate = new IntricateImbuing();
         private ICalculate powerfullImbuCalculate = new PowerfullImbuing();
@@ -18,7 +17,6 @@ namespace ImbuingCalculatorWinForm
         public formLifeLeech()
         {
             InitializeComponent();
-            calculator = new LifeLeechCalculator();
         }
 
         #region "X" buttons

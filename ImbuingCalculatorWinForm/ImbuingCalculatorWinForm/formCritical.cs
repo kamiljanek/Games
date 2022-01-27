@@ -10,7 +10,6 @@ namespace ImbuingCalculatorWinForm
 {
     public partial class formCritical : Form
     {
-        private ICalculator calculator;
         private ICalculate basicImbuCalculate = new BasicImbuing();
         private ICalculate intricateImbuCalculate = new IntricateImbuing();
         private ICalculate powerfullImbuCalculate = new PowerfullImbuing();
@@ -18,11 +17,7 @@ namespace ImbuingCalculatorWinForm
         public formCritical()
         {
             InitializeComponent();
-            calculator = new CriticalCalculator();
-
         }
-
-
 
         #region "X" buttons
         private void btnProtectiveCharmClear_Click(object sender, EventArgs e)
@@ -83,7 +78,6 @@ namespace ImbuingCalculatorWinForm
             }
         }
 
-
         private void txtSabretoothPrice_TextChanged(object sender, EventArgs e)
         {
             Values.CriticalItems[1] = int.TryParse(txtSabretoothPrice.Text, out int value) ? value : 0;
@@ -132,6 +126,7 @@ namespace ImbuingCalculatorWinForm
         }
         #endregion
 
+   
     }
 }
 

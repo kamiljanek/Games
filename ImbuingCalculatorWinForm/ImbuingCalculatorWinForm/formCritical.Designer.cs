@@ -241,13 +241,13 @@ namespace ImbuingCalculatorWinForm
         }
 
         #endregion
-            List<ImbuingItem> criticalItems = new List<ImbuingItem>() 
+           public List<ImbuingItem> criticalItems = new List<ImbuingItem>() 
             {
                new ImbuingItem("Protective Charm", 20) ,
                new ImbuingItem("Sabretooth", 25),
                new ImbuingItem("Vexclaw Talon", 5)
-
             };
+
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.Button btnVexclawTalonClear;
         private System.Windows.Forms.TextBox txtVexclawTalonPrice;
