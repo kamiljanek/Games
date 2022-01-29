@@ -109,73 +109,17 @@ namespace ImbuingCalculatorWinForm
         private void txtGoldTokenPrice_TextChanged(object sender, EventArgs e)
         {
             Values.GoldTokenPrice = int.TryParse(txtGoldTokenPrice.Text, out int value) ? value : 0;
+            Messages.CountImbuFromGoldToken_ChangeText(
+                Values.CriticalItems, basicImbuCalculate, intricateImbuCalculate, powerfullImbuCalculate,
+                criticalDisplay.criticalItems, criticalDisplay.lblCriticalResult);
 
+            Messages.CountImbuFromGoldToken_ChangeText(
+               Values.ManaLeechItems, basicImbuCalculate, intricateImbuCalculate, powerfullImbuCalculate,
+               manaLeechDisplay.manaLeechItems, manaLeechDisplay.lblManaLeechResult);
 
-            if (Values.CriticalItems[0] != 0 && Values.CriticalItems[1] == 0 && Values.CriticalItems[2] == 0)
-            {
-                var result = basicImbuCalculate.Calculate(criticalDisplay.criticalItems, Values.CriticalItems);
-                basicImbuCalculate.IfStatement(result, criticalDisplay.lblCriticalResult);
-            }
-            else if (Values.CriticalItems[0] != 0 && Values.CriticalItems[1] != 0 && Values.CriticalItems[2] == 0)
-            {
-                var result = intricateImbuCalculate.Calculate(criticalDisplay.criticalItems, Values.CriticalItems);
-                intricateImbuCalculate.IfStatement(result, criticalDisplay.lblCriticalResult);
-            }
-
-            else if (Values.CriticalItems[0] != 0 && Values.CriticalItems[1] != 0 && Values.CriticalItems[2] != 0)
-            {
-                var result = powerfullImbuCalculate.Calculate(criticalDisplay.criticalItems, Values.CriticalItems);
-                powerfullImbuCalculate.IfStatement(result, criticalDisplay.lblCriticalResult);
-            }
-            else
-            {
-                Messages.WrongInputMessage(criticalDisplay.lblCriticalResult);
-            }
-
-
-
-            if (Values.ManaLeechItems[0] != 0 && Values.ManaLeechItems[1] == 0 && Values.ManaLeechItems[2] == 0)
-            {
-                var result = basicImbuCalculate.Calculate(manaLeechDisplay.manaLeechItems, Values.ManaLeechItems);
-                basicImbuCalculate.IfStatement(result, manaLeechDisplay.lblManaLeechResult);
-            }
-            else if (Values.ManaLeechItems[0] != 0 && Values.ManaLeechItems[1] != 0 && Values.ManaLeechItems[2] == 0)
-            {
-                var result = intricateImbuCalculate.Calculate(manaLeechDisplay.manaLeechItems, Values.ManaLeechItems);
-                intricateImbuCalculate.IfStatement(result, manaLeechDisplay.lblManaLeechResult);
-            }
-
-            else if (Values.ManaLeechItems[0] != 0 && Values.ManaLeechItems[1] != 0 && Values.ManaLeechItems[2] != 0)
-            {
-                var result = powerfullImbuCalculate.Calculate(manaLeechDisplay.manaLeechItems, Values.ManaLeechItems);
-                powerfullImbuCalculate.IfStatement(result, manaLeechDisplay.lblManaLeechResult);
-            }
-            else
-            {
-                Messages.WrongInputMessage(manaLeechDisplay.lblManaLeechResult);
-            }
-
-
-            if (Values.LifeLeechItems[0] != 0 && Values.LifeLeechItems[1] == 0 && Values.LifeLeechItems[2] == 0)
-            {
-                var result = basicImbuCalculate.Calculate(lifeLeechDisplay.lifeLeechItems, Values.LifeLeechItems);
-                basicImbuCalculate.IfStatement(result, lifeLeechDisplay.lblLifeLeechResult);
-            }
-            else if (Values.LifeLeechItems[0] != 0 && Values.LifeLeechItems[1] != 0 && Values.LifeLeechItems[2] == 0)
-            {
-                var result = intricateImbuCalculate.Calculate(lifeLeechDisplay.lifeLeechItems, Values.LifeLeechItems);
-                intricateImbuCalculate.IfStatement(result, lifeLeechDisplay.lblLifeLeechResult);
-            }
-
-            else if (Values.LifeLeechItems[0] != 0 && Values.LifeLeechItems[1] != 0 && Values.LifeLeechItems[2] != 0)
-            {
-                var result = powerfullImbuCalculate.Calculate(lifeLeechDisplay.lifeLeechItems, Values.LifeLeechItems);
-                powerfullImbuCalculate.IfStatement(result, lifeLeechDisplay.lblLifeLeechResult);
-            }
-            else
-            {
-                Messages.WrongInputMessage(lifeLeechDisplay.lblLifeLeechResult);
-            }
+            Messages.CountImbuFromGoldToken_ChangeText(
+               Values.LifeLeechItems, basicImbuCalculate, intricateImbuCalculate, powerfullImbuCalculate,
+               lifeLeechDisplay.lifeLeechItems, lifeLeechDisplay.lblLifeLeechResult);
         }
     }
  

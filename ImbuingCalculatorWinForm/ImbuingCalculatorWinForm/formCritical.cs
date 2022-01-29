@@ -51,19 +51,16 @@ namespace ImbuingCalculatorWinForm
             {
                 Messages.GoldTokenEmpty(lblCriticalResult);
             }
-
             else if (Values.CriticalItems[0] != 0 && Values.CriticalItems[1] != 0 && Values.CriticalItems[2] == 0)
             {
                 var result = intricateImbuCalculate.Calculate(criticalItems, Values.CriticalItems);
                 intricateImbuCalculate.IfStatement(result, lblCriticalResult);
             }
-
             else if (Values.CriticalItems[0] != 0 && Values.CriticalItems[1] != 0 && Values.CriticalItems[2] != 0)
             {
                 var result = powerfullImbuCalculate.Calculate(criticalItems, Values.CriticalItems);
                 powerfullImbuCalculate.IfStatement(result, lblCriticalResult);
             }
-
             else
             {
                 if (Values.CriticalItems[0] != 0)

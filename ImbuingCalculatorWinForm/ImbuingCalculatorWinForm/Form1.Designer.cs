@@ -8,7 +8,7 @@ namespace ImbuingCalculatorWinForm
 {
     public partial class Form1
     {
-        
+
         /// <summary>
         ///  Required designer variable.
         /// </summary>
@@ -28,7 +28,7 @@ namespace ImbuingCalculatorWinForm
         }
 
         #region Windows Form Designer generated code
-      
+
         /// <summary>
         ///  Required method for Designer support - do not modify
         ///  the contents of this method with the code editor.
@@ -259,8 +259,8 @@ namespace ImbuingCalculatorWinForm
             this.ResumeLayout(false);
 
         }
-    
-     
+
+
         #endregion
 
         private System.Windows.Forms.Panel panel1;
@@ -277,7 +277,7 @@ namespace ImbuingCalculatorWinForm
         private System.Windows.Forms.Label lblTitle;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel pnlFormLoader;
-        
+
     }
     public static class Values
     {
@@ -304,10 +304,10 @@ namespace ImbuingCalculatorWinForm
             this.name = name;
             this.amount = amount;
         }
-     
+
     }
- 
-    
+
+
 
     public static class Messages
     {
@@ -333,8 +333,46 @@ namespace ImbuingCalculatorWinForm
             label.ForeColor = Color.Red;
             label.Text = "Wrong item lable input...";
         }
+        internal static void CountImbuFromGoldToken_ChangeText(int[] values, ICalculate basicImbuingCalculate, ICalculate intricateImbuingCalculate, ICalculate powerfullImbuingCalculate, List<ImbuingItem> imbuingItems, Label label)
+        {
+            if (values[0] != 0 && values[1] == 0 && values[2] == 0)
+            {
+                var result = basicImbuingCalculate.Calculate(imbuingItems, values);
+                basicImbuingCalculate.IfStatement(result, label);
+            }
+            else if (values[0] != 0 && values[1] != 0 && values[2] == 0)
+            {
+                var result = intricateImbuingCalculate.Calculate(imbuingItems, values);
+                intricateImbuingCalculate.IfStatement(result, label);
+            }
+
+            else if (values[0] != 0 && values[1] != 0 && values[2] != 0)
+            {
+                var result = powerfullImbuingCalculate.Calculate(imbuingItems, values);
+                powerfullImbuingCalculate.IfStatement(result, label);
+            }
+            else
+            {
+                Messages.WrongInputMessage(label);
+            }
+        }
+        //public static string LoseResult(int result) => $"{Messages.BasicResultMessage} LOSE {result}";
+        //public static string SaveResult(int result) => $"{Messages.BasicResultMessage} SAVE {Math.Abs(result)}";
+        //public static void IfStatement(int result, Label label)
+        //{
+        //    if (result > 0)
+        //    {
+        //        Messages.LoseColor(label);
+        //        label.Text = LoseResult(result);
+        //    }
+        //    else
+        //    {
+        //        Messages.SaveColor(label);
+        //        label.Text = SaveResult(result);
+        //    }
+        //}
     }
-   interface ICalculate
+    interface ICalculate
     {
         public int Calculate(List<ImbuingItem> items, int[] itemPrices);
         public string LoseResult(int result);
@@ -387,7 +425,7 @@ namespace ImbuingCalculatorWinForm
 
     public class PowerfullImbuing : ICalculate
     {
-        public int Calculate(List<ImbuingItem> items, int[] itemPrices) => 6 * Values.GoldTokenPrice - ((items[0].amount* itemPrices[0]) + (items[1].amount* itemPrices[1])+(items[2].amount* itemPrices[2]));
+        public int Calculate(List<ImbuingItem> items, int[] itemPrices) => 6 * Values.GoldTokenPrice - ((items[0].amount * itemPrices[0]) + (items[1].amount * itemPrices[1]) + (items[2].amount * itemPrices[2]));
         public string LoseResult(int result) => $"{Messages.PowerfullResultMessage} LOSE {result}";
         public string SaveResult(int result) => $"{Messages.PowerfullResultMessage} SAVE {Math.Abs(result)}";
         public void IfStatement(int result, Label label)
@@ -405,4 +443,5 @@ namespace ImbuingCalculatorWinForm
         }
     }
 }
+
 
