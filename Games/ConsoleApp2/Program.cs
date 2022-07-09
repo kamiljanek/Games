@@ -27,6 +27,9 @@ namespace RequestsTest
                 Console.WriteLine("Unable to send email. Error : " + ex);
             }
 
+            Console.WriteLine("hello 1");
+            Console.WriteLine("hello 2");
+
 
 
         }
