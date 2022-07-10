@@ -12,7 +12,7 @@ namespace RequestsTest
                 SmtpClient mailServer = new SmtpClient("smtp.gmail.com", 587);
                 mailServer.EnableSsl = true;
 
-                mailServer.Credentials = new System.Net.NetworkCredential("flymet.meteopress@gmail.com", "rduigygrntkffhfn");
+                mailServer.Credentials = new System.Net.NetworkCredential("flymet.meteopress@gmail.com", "rgyghfn");
 
                 string from = "flymet.meteopress@gmail.com";
                 string to = "flymet.meteopress@gmail.com";
@@ -36,6 +36,7 @@ namespace RequestsTest
             Console.WriteLine("hello 7");
             Console.WriteLine("hello 8");
             Console.WriteLine("hello 9");
+            Console.WriteLine("hello 10");
 
 
 
