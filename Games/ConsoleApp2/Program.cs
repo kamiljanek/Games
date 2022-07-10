@@ -27,12 +27,11 @@ namespace RequestsTest
                 Console.WriteLine("Unable to send email. Error : " + ex);
             }
 
-            Console.WriteLine("hello 1");
-            Console.WriteLine("hello 2");
             Console.WriteLine("hello 3");
             Console.WriteLine("hello 4");
             Console.WriteLine("hello 5");
-            Console.WriteLine("hello 6");
+            Console.WriteLine("hello 1");
+            Console.WriteLine("hello 2");
 
 
 
